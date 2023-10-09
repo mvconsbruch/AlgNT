@@ -1,0 +1,243 @@
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern, setspace}
+\usepackage{amsmath, amssymb, mathtools, amsthm, mathrsfs}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{adjustbox}
+\usepackage{subfiles}
+
+% llbracket and rrbracket
+\usepackage{stmaryrd}
+% todonotes + margin gegen error
+\setlength {\marginparwidth }{2cm}
+\usepackage{todonotes}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\newcommand {\cE}{\mathcal {E}}
+
+\newcommand{\textsfnormal}[1]{\textnormal{$\textsf{#1}$}}
+
+\newcommand{\exercise}[1]{\subsection*{Exercise #1}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\GG}{\mathbb{G}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\RC}{\mathbb{RC}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\sC}{\mathscr{C}}
+\newcommand{\sD}{\mathscr{D}}
+\newcommand{\sU}{\mathscr{U}}
+\newcommand{\sfC}{\textsfnormal{C}}
+\newcommand{\Obj}{\textsfnormal{Obj}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\opp}{\op}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\xinj}[1]{\xhookrightarrow{#1}}
+\newcommand{\xto}[1]{\xrightarrow{#1}}
+
+\newcommand{\ab}{\textsfnormal{ab}}
+\newcommand{\Mod}{\textsfnormal{Mod}}
+\newcommand{\Ab}{\textsfnormal{Ab}}
+\newcommand{\AbGrp}{\textsfnormal{AbGrp}}
+\newcommand{\Frac}{\mathrm{Frac}}
+\newcommand{\Quot}{\mathrm{Quot}}
+\newcommand{\GMod}{\textsfnormal{G-Mod}}
+\newcommand{\Ch}{\textsfnormal{Ch}}
+\newcommand{\SES}{\textsfnormal{SES}}
+\newcommand{\Grp}{\textsfnormal{Grp}}
+\newcommand{\Top}{\textsfnormal{Top}}
+\newcommand{\Ouv}{\textsfnormal{Ouv}}
+\newcommand{\Set}{(\mathrm{Set})}
+\newcommand{\Sch}{(\mathrm{Sch})}
+\newcommand{\SchOver}[1]{(\mathrm{Sch}/ #1)}
+\newcommand{\SchOO}[2]{(\mathrm{Sch}/ #1 / #2)}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cF}{\mathscr{F}}
+\newcommand{\cG}{\mathscr{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\CO}{\mathcal{O}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cN}{\mathcal{O}}
+\newcommand\cHH{\check{\mathrm{H}}} %Cech-Cohomology
+\newcommand{\fF}{\mathfrak{F}}
+\newcommand{\fa}{\mathfrak{a}}
+\newcommand{\fb}{\mathfrak{b}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\fn}{\mathfrak{n}}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fq}{\mathfrak{q}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\pr}{\text{pr}}
+\newcommand{\sing}{\text{sing}}
+\newcommand{\cell}{\text{cell}}
+\newcommand{\chr}{\operatorname{char}}
+\newcommand{\Iff}{\Longleftrightarrow}
+\newcommand{\Implies}{\Longrightarrow}
+\newcommand{\surj}{\rightarrow}
+\newcommand{\xsurj}[1]{\xrightarrow{#1}}
+\renewcommand{\phi}{\varphi}
+\newcommand{\eps}{\varepsilon}
+\DeclareMathOperator{\Ker}{Ker}
+\renewcommand{\ker}{\Ker}
+\renewcommand{\bar}{\overline}
+\DeclareMathOperator*{\colim}{colim}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Idem}{Idem}
+\DeclareMathOperator{\inv}{inv}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\inc}{inc}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\coker}{Coker}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Img}{Im}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\coim}{Coim}
+\DeclareMathOperator{\coimg}{Coim}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Norm}{N}
+\newcommand{\NormLK}{\Norm_{L/K}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Eig}{Eig}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\spec}{Spec}
+\DeclareMathOperator{\MinSpec}{MinSpec}
+\DeclareMathOperator{\MaxSpec}{MaxSpec}
+\DeclareMathOperator{\Sym}{Sym}
+\newcommand{\lbr}{\llbracket}
+\newcommand{\rbr}{\rrbracket}
+\newcommand{\rSpec}{\underline{\spec}}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\Weil}{Weil}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\wtilde}[1]{\widetilde{#1}}
+\newcommand{\what}[1]{\widehat{#1}}
+\newcommand{\clos}[1]{\overline{#1}}
+\newcommand{\Span}[1]{\left\langle #1 \right\rangle}
+\newcommand{\sub}[0]{\trianglelefteq}
+\renewcommand{\div}{\operatorname{div}}
+\renewcommand{\o}{\varnothing}
+\renewcommand{\O}{\mathcal O}
+\renewcommand{\empty}{\varnothing}
+\newcommand{\D}{\partial}
+\newcommand{\dc}{\mathrm{\,d}} 
+\newcommand{\tensor}{\otimes}
+\newcommand{\ec}{\mathrm e}
+\newcommand{\ic}{\mathrm i}
+
+\newcommand{\LHS}{\mathrm{LHS}}
+\newcommand{\RHS}{\mathrm{RHS}}
+\newcommand{\Li}{\mathrm{Li}}
+\newcommand{\li}{\mathrm{li}}
+
+\newcommand {\cI}{\mathcal {I}}
+\newcommand {\cJ}{\mathcal {J}}
+\newcommand {\cU}{\mathcal {U}}
+\newcommand {\cV}{\mathcal {V}}
+\newcommand {\lacts}{\curvearrowright}
+\newcommand {\TM}{\Tilde M[\tfrac 16]}
+\newcommand{\TMn}{\Tilde M_n}
+\newcommand{\FMn}{M_n[\tfrac 16]}
+\newcommand{\TMQuot}{\GG_m \backslash \TM}
+\newcommand{\TMnQuot}{\GG_m \backslash \TMn}
+\newcommand {\FM}{M[\frac 16]}
+\newcommand {\rProj}{\underline{\operatorname{Proj}}}
+\newcommand {\abs}[1]{\left\lvert  #1 \right\rvert}
+
+\newcommand{\fsl}{\mathfrak{sl}}
+\newcommand{\fg}{\mathfrak{g}}
+
+\newcommand{\PROD}{\textnormal{PROD}}
+\newcommand{\LOCS}{\textnormal{LOCS}}
+\newcommand{\LOCT}{\textnormal{LOCT}}
+\newcommand{\BC}{\textnormal{BC}}
+\newcommand{\COMP}{\textnormal{COMP}}
+\newcommand{\QCoh}{\text{QCoh}}
+\newcommand{\QCohs}{\text{QCohs}}
+
+\newcommand{\red}[1]{\color{red}\textnormal{[#1]}\color{black}}
+\newcommand{\blue}[1]{\color{blue}\textnormal{[#1]}\color{black}}
+
+\newcommand{\legendre}[2]{\left( \frac{#1}{#2} \right)}
+
+
+\newcommand{\mat}[4]{\begin{pmatrix}
+    #1 & #2\\
+    #3 & #4
+\end{pmatrix}}
+\newcommand{\smat}[4]{\big(\begin{smallmatrix}
+    #1 & #2\\
+    #3 & #4
+\end{smallmatrix}\big)}
+
+\newcommand{\svec}[2]{\big(\begin{smallmatrix}
+    #1\\
+    #2
+\end{smallmatrix}\big)}
+
+
+\newtheorem{thm}{Theorem}%[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{fact}[thm]{Fact}
+
+
+\newtheorem{defi}[thm]{Definition}
+\newtheorem*{lema}{Lemma}
+\newtheorem{deflem}[thm]{Definition and Lemma}
+%\newtheorem*{cora}{Korollar}
+%\newtheorem*{thma}{Satz}
+%\newtheorem*{defa}{Definition}
+%\numberwithin{equation}{section}
+
+%anant
+\newcommand{\et}{\mathit{ét}}
+
+\newcommand{\pifrac}{\frac{1}{2 \pi \ic}}
+
+\newcommand{\ssum}{\sideset{}{^*} \sum}
+\newcommand{\psum}{\sideset{}{^'} \sum}
+\newcommand{\contactend}{\vspace*{\fill} \small{Max von Consbruch, email: s6mavonc@uni-bonn.de. Date: \today}}
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\hat}{\widehat}
+\DeclareMathOperator{\supp}{Supp}
+\DeclareMathOperator{\Supp}{Supp}
+\newcommand{\Res}{\mathrm{Res}}
+
+
+
