@@ -9,248 +9,61 @@
 \end{center}
 
 \exercise{1}
-Determine the nilradical, the Jacobson radical and the units for each
-ring $A$ below:
-\begin{enumerate}
-    \item $k$ a field and $A = k[T]$,
-    \item $k$ a field and $A = k[\epsilon, T]/(\epsilon^2)$,
-    \item $n \geq 1$, $k$ a field and $A = k \llbracket T_1, \dots, T_n \rrbracket$. 
-\end{enumerate}
-\textbf{Solution.}
-\begin{enumerate}
-    \item \textit{Nilradical.} If $B$ is any commutative ring without
-        zero divisors, then $B[T]$ doesn't have zero divisors. Indeed,
-        if $f, g \in B[T]$ with $fg = 0$, we can look at the leading terms
-        of $f$ and $g$, obtaining $f = 0$ or $g = 0$. We now obtain $\Nil(A) = (0)$
-        as every element in the nilradical is a zero divisor.
+Let $n \in \N$ and $\zeta_n = \ec^{2 \pi \ic/n} \in \C$. Recall that 
+$\Z[\zeta_n]$ denotes the smallest subring of the field of complex numbers
+that contains $\Z$ and $\zeta_n$. Show that $1/3 \not \in \Z[\zeta_n]$. 
 
-        \textit{Units.} Obviously, $k^\times \subset k[T]^\times$.
-        We have the additive degree map $\deg: k[T]^\times \to \N_0$. If
-        we have elements $f,g \in k[T]$ with $fg = 1$,
-        then $0 = \deg (fg) = \deg(f) + \deg(g)$, thereby $\deg(f) = \deg(g) = 0$
-        and $f,g \in k^\times$. This shows that $k^\times \supset k[T]^\times$,
-        and we have equality. 
-
-        \textit{Jacobson radical.} Note that if $B$ is any commutative 
-        ring and $f \in \Jac(B)$, then $1 + f \in B^\times$. Indeed, if we had
-        $1 + f \not \in B^\times$, we'd find some maximal ideal $\fm$ containing
-        $1 + f$ (by Zorn's lemma). But now $f \in \fm$ (as $f \in \Jac(B)$)
-        and $1 + f \in \fm$, hence $1 \in \fm$. This is a contradiction. 
-        Thereby we obtain
-        that every $f \in \Jac(A)$ has degree $0$, i.e., lies in $k$. As
-        $A^\times \cap \Jac(A) = \emptyset$, we find $\Jac(A) = 0$. (As
-        $\Jac(A) \supset \Nil(A)$, this is stronger than $\Nil(A) = 0$.) 
-    \item \textit{Nilradical and Jacobson radical.} We claim that if $I \subset
-        \Nil(A)$, there is an equality $\Nil(A)/I = \Nil(A/I)$. Indeed, this
-        can be seen directly by writing the nilradical as the intersection of
-        prime ideals. The same statement is true for the Jacobson radical. 
-
-        We apply this statement with $I = (\varepsilon)$. As $\varepsilon^2 = 0$, 
-        we have $I \subset \fp$ for every prime ideal, hence $(\varepsilon)
-        \subset \Jac(A)$. As $A/(\varepsilon) \cong k[T]$, we have 
-        $(0) = \Nil(A/(\varepsilon)) = \Nil(A) / (\varepsilon)$. This shows 
-        $\Nil(A) = (\varepsilon)$. 
-
-        The same proof, but with $\Jac$ in place of $\Nil$ (and maximal ideals
-        instead of prime ideals) shows that $\Jac(A) = (\varepsilon)$.
-
-        \textit{Units.} There are probably smarter ways to do this, but let's try
-        brute force. Suppose we have $f = f_1 + \varepsilon f_2$ and 
-        $g = g_1 + \varepsilon g_2$, where $f_i, g_i \in k[T]$, such that $fg =
-        1$. Now $1 = f_1 g_1 + \varepsilon (f_1 g_2 + f_2 g_1)$. It follows 
-        that $f_1 \in k^\times$, and we clam that this is also sufficient for 
-        $f \in A^\times$. Indeed, up to multiplication with a constant 
-        in $k^\times$, $f$ is of the form $1 + \varepsilon f_2$, and now
-        $f$ admits an inverse $f^{-1} = 1 - \varepsilon f_2$. 
-        
-    \item \textit{Units.} We first claim that every $f \in A$ with non-zero 
-        constant term is invertible. Indeed, after multiplying with a unit
-        $c \in k^\times$ we may assume that $f = 1 + R$ with $R \in (T_1,
-        \dots, T_n)$. Now, $f$ admits the inverse $f^{-1} = \frac 1{1-(1-f)} =
-        \sum_{n=0}^\infty (1-f)^n \in k\llbracket T_1, \dots, T_n \rrbracket.$
-
-        \textit{Jacobson radical.} We first claim that $A$ is a local ring, i.e., a 
-        ring with a unique maximal ideal. Indeed, we have seen that every
-        element not lying in the ideal $\fm = (T_1, \dots, T_n)$ is invertible, hence
-        $\fm$ is an ideal that contains all other ideals.
-
-        \textit{Nil radical.} We want to show that $A$ is reduced. 
-        More generally, we prove the following statement, from where the claim
-        follows by induction.
-        \begin{equation*}
-            \textit{If $B$ is reduced, $B\llbracket T \rrbracket$ is reduced.}
-        \end{equation*}
-        for the sake of contradiction, assume that $f \in B\llbracket T
-        \rrbracket$ is a non-zero power series with $f^n = 0$. Write $f = a_d
-        T^d + a_{d+1}T^{d+1} + \dots$ with $a_d \neq 0$. Now $f^n = 0$ implies
-        $a_d^n = 0$, so $a_d = 0$ by reducedness of $B$. Hence $f = 0$. 
-\end{enumerate}
+\textbf{Solution.} There are multiple ways to show this.
+Denote $A_n = \Z[\zeta_n]$. Note that if $1/3 \in A_n$, we'd have 
+$\Z[1/3] \subset A_n$ as well. But there is a fundamental difference between
+$A_n$ and $\Z[1/3]$. The latter is a finite (free) $\Z$-module while the 
+former is not. As $\Z$ is a PID and submodules of finite\footnote{This assumption can be removed, see for example \url{https://math.stackexchange.com/questions/162945/}.} free modules over a PID are free, we have a contradiction.
+This implies other differences between the two rings. For example,
+$1/3 \in \Z[1/3]$ is not integral over $\Z$, while every element of 
+$\Z[\zeta_n]$ is.
 
 \exercise{2}
-Prove the \textit{Chinese remainder theorem}: Let $A$ be a ring and $\fa, \fb
-\subset A$ two ideals such that $\fa + \fb = A$. Then the map 
+Here, $\zeta_3$ is as in Exercise 1. For $f \in \N$ we define
 \begin{equation*}
-    A/ \fa \cap \fb \to A/ \fa \times A/\fb, \quad 
-    r + \fa \cap \fb \mapsto (r + \fa, r + \fb)
+    A_f = \left \{ a + fb \frac{\sqrt{-3} + 1}2 \mid a, b \in \Z \right \}.
 \end{equation*}
-is an isomorphism. Moreover, show that $\fa \cap \fb = \fa \cdot \fb$, where
-$\fa \cdot \fb$ is the smalles ideal in $A$ containing all products $ab$ 
-wth $a \in A$, $b \in B$. 
-Show $a \cap b = ab$. Show that map has kernel $a \cap b$ and that homomorphism is surjective. 
-
-\textbf{Solution.} We first show that this map is well-defined, and indeed a 
-homomorphism of rings. This is evident for the reduction-mod-$\fa$ and 
-reduction-mod-$\fb$ maps $A \to A/\fa$ and $A/\fb$. By the universal property of 
-the product of rings we obtain the map $A \to A/\fa \times A/\fb$. The kernel
-of this homomorphism is given by the elements in $A$ which lie simultaneously in 
-$\fa$ and $\fb$, hence we obtain an injective map 
-\begin{equation*}
-    A/(\fa \cap \fb) \to A/\fa \times A/\fb.
-\end{equation*}
-To show surjectivity, it suffices to construct elements $a, b \in A$ such that 
-$a \mapsto (0,1)$ and $b \mapsto (1,0)$. As $\fa + \fb = A$, there are elements
-$a \in \fa$ and $b \in \fb$ such that $a + b = 1$. These are the elements we 
-are looking for! Indeed, as $a = 1 - b$ we find that $a$ reduces to $1$ mod $\fb$,
-and as $a \in \fa$ we find $(a + \fa, a + \fb) = (\fa, 1 + \fb)$. 
-
-\textbf{Remark.} There is a more general version of the chinese remainder theorem
-which we will need in exercise 4. Namely, if $\fa_1, \dots, \fa_n$ is a finite
-set of pairwise coprime ideals (meaning that for any choice $1 \leq i < j \leq n$
-we have $\fa_i + \fa_j = A$), there is an isomorphism
-\begin{equation*}
-    A/(\fa_1 \cap \dots \cap \fa_n) \cong A/\fa_1 \times \dots \times A/\fa_n.
-\end{equation*}
-To see this, one can either generalize the proof given above, or use induction
-after showing that the coprimality assumption implies that the ideals
-$(\fa_1 \cap \dots \cap \fa_{n-1})$ and $\fa_n$ are coprime.
-
-We now show that $\fa \cap \fb = \fa \cdot \fb$. The inclusion 
-$\fa \cap \fb \supset \fa \cdot \fb$ is obvious, as all products $ab$ lie in both
-$\fa$ and $\fb$. To show the reverse inclusion, let $f \in \fa \cap \fb$. Again,
-let $a + b = 1$ with $a \in \fa$ and $b \in \fb$. Then $fa + fb = f$, and the 
-left hand side lies in $\fa \cdot \fb$ by definition. 
-
-\textbf{Remark.} Note that this statement
-is wrong if we drop the assumption that $\fa + \fb = 1$. Indeed, take for 
-example $\fa = (4)$, $\fb = (6)$ as ideals of $\Z$. Then $\fa \fb = (24)$, 
-while $\fa \cap \fb = (12)$. However, the assumption that $\fa + \fb = A$ is 
-not necessary. In the case $A = k[X,Y]$, $\fa = (X)$ and $\fb = (Y)$ we still 
-have $\fa \fb = (XY) = \fa \cap \fb$ even though $\fa + \fb = (X,Y) \neq A$.
-
+\begin{enumerate}
+    \item Show that $A_f \subset A_1 = \Z[\zeta_3]$ isa subring of 
+        $\C$ for all $f \in \N$. 
+    \item Let $\abs \cdot$ denote the absolute value on $\C$. Show that 
+        $\abs \omega^2 \in \Z$ for all $\omega \in \Z[\zeta_3]$. 
+    \item Show that the unit group $\Z[\zeta_3]^\times$ is equal to
+        $\{\omega \in \Z[\zeta_3] \mid \abs \omega = 1\}$. 
+\end{enumerate}
+\textbf{Solution.}
+\begin{enumerate}
+    \item 
+    \item Remember that for the absolute value on $\C$ we have
+        \begin{equation*}
+            \abs {x + \ic y}^2 = (x + \ic y)(x - \ic y) = x^2 + y^2.
+        \end{equation*}
+        for $f \in \N$ and $a, b \in \Z$ this gives
+        \begin{equation*}
+            \abs{a + fb \frac{\sqrt{-3}+1}2}^2 = \left (a + \frac f2\right)^2
+            + 3\left( \frac {fb}2 \right)^2 = a^2 + af + (fb)^2 \in \Z. 
+        \end{equation*}
+    \item All units have invertible absolute value, hence we can conclude
+        that if $\omega$ is a unit, it has absolute value $1$. This
+        shows one implication. But $\abs \omega^2 = 1$  
+        implies that $\omega \overline \omega = 1$, hence $\omega^{-1} = 
+        \overline \omega \in \Z[\zeta_3]$, which shows the reverse implication.
+\end{enumerate}
 
 \exercise{3}
-Recall that an element $e \in A$ in a ring $A$ is called idempotent if $e^2 = e$. 
-\begin{enumerate}
-    \item Let $A$ be a ring. Show that the map $e \mapsto (A_1 \coloneqq eA,
-        A_2 \coloneqq (1-e)A)$ induces a bijection between the set $\Idem(A)$
-        of idempotents of $A$
-        and the set of decompositions $A = A_1 \times A_2$ of rings. 
-    \item Let $A = \Z/133\Z$. Determine $\Idem(A)$. 
-\end{enumerate}
-
-\textbf{Solution.}
-\begin{enumerate}
-    \item The exercise does not make clear what it means by a decomposition. In
-        the scope of this exercise, a decomposition of $A$ is an
-        isomorphism $\delta : A \to A_1 \times A_2$, where 
-        $A_1$ and $A_2$ are any two rings. We say that two decompositions
-        $\delta_1: A \to A_1 \times A_2$ and $\delta_2: A \to B_1 \times B_2$
-        are isomorphic iff there are isomorphisms
-        $\phi_i : A_i \to B_i$, $i = 1,2$ such that $(\phi_1, \phi_2) \circ
-        \delta_1 = \delta_2$. We define the set $D_A$ as the set of isomorphism
-        classes of the set\footnote{Actually I'm not sure if this really is a
-        set, but whatever.  The decompositions will certainly form a category
-        (a groupoid), with morphisms the isomorphisms we described. The
-        isomorphism classes do form a set as they all are represented by quotients
-        of $A$.} of decompositions, and we'll show that the map specified in the
-        exercise gives a bijection $\Idem(A) \to D_A$. 
-
-        First, note that $(1-e)^2 = (1-e)$ for any idempotent $e$. 
-
-        We have show that the map really is a map! That is, we show
-        that for any idempotent element $e \in A$, there is an isomorphism
-        $\delta_e: A \cong eA \times (1-e)A$, where $eA$ and $(1-e)A$ carry the
-        ring structure of $A$, but with identity given by $e$ and $(1-e)$,
-        respectively. Surjectivity is comes from the fact that $(ea, (1-e)b)$ has
-        preimage $(ea + (1-e)b)$, and injectivity boils down to the 
-        calculation $\ker(\delta_e) = (e) \cap (1-e) = (e)\cdot(1-e) = (0)$. 
-
-        Next, note that we also have a map $D_A \to \Idem(A)$ given by sending
-        $\delta: A \to A_1 \times A_2$ to $e_\delta \coloneqq \delta^{-1}(1,0)$. 
-        This map does not depend on the isomorphism class of $\delta$ as ring
-        homomorphisms preserve the multiplicative unit. One quickly verifies that
-        $\Idem(A) \to D_A \to \Idem(A)$ is the identity. The last thing to see 
-        is that $D_A \to \Idem(A) \to D_A$ is the identity as well, which is the 
-        same as showing that for a given decomposition $\delta: A \to A_1
-        \times A_2$, there is an isomorphism $\delta \cong \delta_{e_\delta}$. 
-        Such an isomorphism is the same as isomorphisms $\phi_1 : e_\delta A
-        \to A_1$, $\phi_2: (1-e_\delta)A \to A_2$. As $\delta$ sends the ideal
-        $(e) \subset A$ to the ideal generated by $(1,0)$ in $A_1 \times A_2$,
-        $\delta$ restricts to an isomorphism (of modules) $e_\delta A \to A_1
-        \times \{0\}$. This yields an isomorphism (of rings) $\phi_1: e_\delta
-        A \to A_1$. Similarly for the second coordinate. Now $(\phi_1, \phi_2)$
-        constitute an isomorphism $\delta \cong \delta_{e_\delta}$. 
-
-    \item Note that $133 = 19 \times 7$, hence by the chinese remainder theorem
-        $\Z/133 \cong \Z/19 \times \Z/7$. The right hand side is a product of 
-        fields, and it is clear that the only idempotents there are given by 
-        $(0,0), (1,0), (0,1), (1,1)$. As $1= 19 \cdot 3 - 7 \cdot 8$, 
-        the isomorphism from the chinese remainder theorem is given by 
-        $(a,b) \mapsto 57b + 77a$, and we find that the non-trivial idempotents
-        are given by $57$ and $77$. 
-\end{enumerate}
-
 
 \exercise{4}
-Let $k$ be a field and let $k \to A$ be a ring homomorphism such that 
-$A$ is finite dimensional over $k$ (i.e., regarded as a $k$-vector space,
-$A$ has finite dimension).
-\begin{enumerate}
-    \item Show that $A$ is a field if $A$ is an integral domain.
-    \item Deduce that each prime ideal in $A$ is maximal.
-    \item Deduce that if $A$ is reduced, then $A$ is isomorphic to a finite 
-        product of finite field extensions $l/k$. 
-\end{enumerate}
-\textbf{Solution.}
-\begin{enumerate}
-    \item Let $x \in A$ be nonzero. Let $\phi: A \to A$ be the map obtained by 
-        multiplication with $x$, i.e., $\phi(a) = x a$. Now $\phi$ is a morphism
-        of $k$-vector spaces (as $\phi(\lambda a + b) = \lambda \phi(a) + \phi(b)$
-        for $\lambda \in k$, $a,b \in A$.), and it is injective by the fact that 
-        $A$ is an integral domain. Indeed, if $xa = 0$, we find $a = 0$ as there
-        are no zero divisors and $x \neq 0$. But now $\phi$ is an injective morphism
-        between $k$-vector spaces of the same dimension, hence an isomorphism.
-        In particular, we find some element $x^{-1} \in A$ such that 
-        $1 = \phi(x^{-1}) = x x^{-1}$. Hence every non-zero element of $A$ has an
-        inverse, and $A$ is a field.
-    \item Let $\fp \in A$ be a prime ideal. We apply what we showed in part 1)
-        to $A/\fp$. As $\fp$ is prime, $A/\fp$ is an integral domain. But also,
-        the composition $k \to A \to A/ \fp$ turns $A/\fp$ into a $k$-vector space
-        with $\dim_k(A/\fp) \leq \dim_k(A)$ (surjective maps between vector spaces
-        reduce dimension). In particular, $A/\fp$ is finite-dimensional over
-        $k$. Now part 1) gives that $A/\fp$ is a field, and as an ideal is 
-        maximal if and only it's quotient ring is a field, we find that 
-        $\fp$ is maximal. 
-    \item Let $M$ be the set of maximal (or prime, they are the same by the
-        above) ideals of $A$. We want to apply the chinese remainder theorem,
-        but a priori we can't, because $M$ might be infinite. We claim however
-        that in our situation, $M$ is finite. To show this, suppose
-        that $(\fm_1, \fm_2, \dots)$ be an infinite sequence of elements in
-        $I$. By the chinese remainder theorem, there is for any $N \in \N$ an
-        isomorphism
-        \begin{equation*}
-            A/(\fm_1\cap \dots \cap \fm_N) \cong A/\fm_1 \times \dots \times A/\fm_N.
-        \end{equation*}
-        The left-hand side has dimension $\leq \dim_k(A)$, as it is a quotient
-        of $A$. Meanwhile, the right-hand side has dimension $\geq N$, as 
-        every quotient $A/\fm_i$ is a non-trivial $k$-vector space and thereby
-        has dimension at least $1$. If we choose $N > \dim_k(A)$, we arrive 
-        at a contradiction. Now $M = \{\fm_1, \dots, \fm_n\}$ is finite, and applying
-        the chinese remainder theorem again yields the desired decomposition. 
-        All factors are field extensions of $k$ of degree $\leq \dim_k(A)$, in
-        particular finite.
-\end{enumerate}
+Let $x,y \in \Z$ such that $y^2 -y  = x^3$. Show that $(x,y) = (0,0)$ or 
+$(x,y) = (0,1)$. 
 
+\textbf{Solution.} 
+As $y$ and $y-1$ share no prime factors, the equation $y^2 - y = y(y-1) = x^3$
+implies that both $y$ and $y-1$ are cubes. But this implies $y \in \{0, 1\}$,
+and it's easy to see that all solutions are of the given form.
 
 \contactend
 \end{document}
