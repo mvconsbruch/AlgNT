@@ -14,10 +14,11 @@ $\Z[\zeta_n]$ denotes the smallest subring of the field of complex numbers
 that contains $\Z$ and $\zeta_n$. Show that $1/3 \not \in \Z[\zeta_n]$. 
 
 \textbf{Solution.} There are multiple ways to show this.
-Denote $A_n = \Z[\zeta_n]$. Note that if $1/3 \in A_n$, we'd have 
-$\Z[1/3] \subset A_n$ as well. But there is a fundamental difference between
-$A_n$ and $\Z[1/3]$. The latter is a finite (free) $\Z$-module while the 
-former is not. As $\Z$ is a PID and submodules of finite\footnote{This assumption can be removed, see for example \url{https://math.stackexchange.com/questions/162945/}.} free modules over a PID are free, we have a contradiction.
+ Note that if $1/3 \in \Z[\zeta_n]$, we'd have 
+$\Z[1/3] \subset \Z[\zeta_n]$ as well. But there is a fundamental difference between
+$\Z[\zeta_n]$ and $\Z[1/3]$. The latter is a finite free $\Z$-module while the 
+former is neither finite nor free. As $\Z$ is a PID and submodules of
+finite free modules over a PID are finite and free, we have a contradiction.
 This implies other differences between the two rings. For example,
 $1/3 \in \Z[1/3]$ is not integral over $\Z$, while every element of 
 $\Z[\zeta_n]$ is.
@@ -28,7 +29,7 @@ Here, $\zeta_3$ is as in Exercise 1. For $f \in \N$ we define
     A_f = \left \{ a + fb \frac{\sqrt{-3} + 1}2 \mid a, b \in \Z \right \}.
 \end{equation*}
 \begin{enumerate}
-    \item Show that $A_f \subset A_1 = \Z[\zeta_3]$ isa subring of 
+    \item Show that $A_f \subset A_1 = \Z[\zeta_3]$ is a subring of 
         $\C$ for all $f \in \N$. 
     \item Let $\abs \cdot$ denote the absolute value on $\C$. Show that 
         $\abs \omega^2 \in \Z$ for all $\omega \in \Z[\zeta_3]$. 
@@ -37,15 +38,21 @@ Here, $\zeta_3$ is as in Exercise 1. For $f \in \N$ we define
 \end{enumerate}
 \textbf{Solution.}
 \begin{enumerate}
-    \item 
+    \item Note that $\zeta_3 = \frac{\sqrt{-3} + 1}2$, and that 
+        $1 + \zeta_3 + \zeta_3^2 = 0$. We have 
+        $$(a + fb \zeta_3)(c + fd \zeta_3) = ac + f(ad + cb)\zeta_3 -
+        f^2bd(1+\zeta_3) \in A_f,$$
+        so $A_f$ is a closed under multiplication. We have $A_f \subset A_{f'}$
+        whenever $f' \mid f$, 
+        and $A_1 = \Z[\zeta_3]$ is a subring of $\C$. 
     \item Remember that for the absolute value on $\C$ we have
         \begin{equation*}
             \abs {x + \ic y}^2 = (x + \ic y)(x - \ic y) = x^2 + y^2.
         \end{equation*}
         for $f \in \N$ and $a, b \in \Z$ this gives
         \begin{equation*}
-            \abs{a + fb \frac{\sqrt{-3}+1}2}^2 = \left (a + \frac f2\right)^2
-            + 3\left( \frac {fb}2 \right)^2 = a^2 + af + (fb)^2 \in \Z. 
+            \abs{a + fb \frac{\sqrt{-3}+1}2}^2 = \left (a + \frac {bf}2\right)^2
+            + 3\left( \frac {fb}2 \right)^2 = a^2 + abf + (fb)^2 \in \Z. 
         \end{equation*}
     \item All units have invertible absolute value, hence we can conclude
         that if $\omega$ is a unit, it has absolute value $1$. This
@@ -55,6 +62,59 @@ Here, $\zeta_3$ is as in Exercise 1. For $f \in \N$ we define
 \end{enumerate}
 
 \exercise{3}
+An integral domain $A$ is called Euclidean if there exists a function 
+$n: A \setminus \{0\} \to \Z_{\geq 0}$ such that for all $a \in A$ and
+$b \in B \setminus \{0\}$ there exist $q, r \in A$ such that 
+$a = bq + r$ and either $r = 0$ or $n(r) < n(b)$.
+\begin{enumerate}
+    \item Show that Euclidean domains are principal ideal domains.
+    \item Show that the ring $\Z[\zeta_3]$ is euclidean.
+    \item Show that $\Z[\sqrt 2]$ is euclidean.
+\end{enumerate}
+
+\textbf{Solution.}
+\begin{enumerate}
+    \item Let $R$ be a euclidean ring with norm function $\delta$. Let $\fa
+        \subset R$ be an ideal, and let $a \in \fa$ be an element such that 
+        $\delta(a)$ is minimal among all elements of $\fa$. Now we have 
+        $\fa = (a)$. Indeed, if $f \in \fa$ is another element, we have 
+        $f = qa + r$ with $q \in A$ and either $\delta(r) < \delta(a)$ or 
+        $r = 0$. As $r = f - qa \in \fa$ and $\delta(a)$ is already minimal
+        among elements in $\fa$, $\delta(r) < \delta(a)$ is not possible.
+        Therefore we find $r = 0$, hence $f = qa \in (a)$. 
+
+    \item[2.\& 3.] We show that $\nu: z \mapsto \abs{N(z)}$ is a euclidean norm
+        function in both cases (where $N$ denotes the respective norm function).
+        Write $\cO_K$ for the respective rings. Let $a,
+        b \in \cO_K$, $b \neq 0$. We want to show that there 
+        are $r \in \cO_K$ and $q \in \cO_K$ with $\nu(r) < \nu(b)$
+        and $a = qb + r$.
+        The idea is simple. We try to approximate $\frac ab \in K = \Frac(\cO_K)$ by
+        some algebraic integer
+        $q = x + y\sqrt d \in \cO_K$ such that $\abs{N(\frac ab - q)} < 1$. Once we
+        found such a $q$, we set $r = a - qb \in \cO_K$ and find
+        \begin{equation*}
+            \nu(r) = \abs{N(r)} = \abs{N(b)N\left(\frac ab -q \right)}
+            < \abs{N(b)} = \nu(b),
+        \end{equation*}
+        which finishes the proof. 
+
+        So we really only need to show that for $\cO_K = \Z[\zeta_3]$ and 
+        $\cO_K = \Z[\sqrt{2}]$, there are such elements $q$. In our cases,
+        this is realtively simple. In the case of $\Z[\sqrt 2]$ we write
+        $\frac ab = u + v \sqrt 2 $ and choose $x, y \in
+        \Z$ such that 
+        $\abs{x-u} \leq 1/2$ and $\abs{y-v} \leq 1/2$. Now 
+        $$\abs{N(\tfrac ab - q)} \leq \abs{(x-u)^2 - 2(y-v)^2} \leq \tfrac 34 < 1,$$ 
+        and we are done. The case $\cO_K = \Z[\zeta_3]$ works the same way.
+        Here we find 
+        $$\abs{N(\tfrac ab - q)} = \abs{(x-u)^2 + (x-u)(y-v) + (y-v)^2} \leq \tfrac
+        34 < 1.$$
+
+
+        
+\end{enumerate}
+
 
 \exercise{4}
 Let $x,y \in \Z$ such that $y^2 -y  = x^3$. Show that $(x,y) = (0,0)$ or 
@@ -67,3 +127,13 @@ and it's easy to see that all solutions are of the given form.
 
 \contactend
 \end{document}
+        small. 
+        
+    \item 
+        We write $\frac ab = u + v\sqrt d$ and choose $x,y \in \Z$ such that
+        $\abs{u-x} \leq 1/2$ and $\abs{v-y} \leq 1/2$. With $q = x + y \sqrt
+        d$, we get
+        \begin{equation*}
+            \abs{N\left(\frac ab - q\right)} = \abs{(u-x)^2 - d(v-y)^2} < 1.
+        \end{equation*}
+        If we set $r = a - bq \in \Z[\sqrt d]$, we obtain
