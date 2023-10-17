@@ -38,9 +38,10 @@ Here, $\zeta_3$ is as in Exercise 1. For $f \in \N$ we define
 \end{enumerate}
 \textbf{Solution.}
 \begin{enumerate}
-    \item Note that $\zeta_3 = \frac{\sqrt{-3} + 1}2$, and that 
-        $1 + \zeta_3 + \zeta_3^2 = 0$. We have 
-        $$(a + fb \zeta_3)(c + fd \zeta_3) = ac + f(ad + cb)\zeta_3 -
+    \item Note that $\zeta_3 = \frac{\sqrt{-3} - 1}2$ (up to choice), and that 
+        $1 + \zeta_3 + \zeta_3^2 = 0$. 
+        Also note that $A_f = \{a + fb \zeta_3 \mid a, b \in \Z\}$.
+        We have $$(a + fb \zeta_3)(c + fd \zeta_3) = ac + f(ad + cb)\zeta_3 -
         f^2bd(1+\zeta_3) \in A_f,$$
         so $A_f$ is a closed under multiplication. We have $A_f \subset A_{f'}$
         whenever $f' \mid f$, 
@@ -51,8 +52,8 @@ Here, $\zeta_3$ is as in Exercise 1. For $f \in \N$ we define
         \end{equation*}
         for $f \in \N$ and $a, b \in \Z$ this gives
         \begin{equation*}
-            \abs{a + fb \frac{\sqrt{-3}+1}2}^2 = \left (a + \frac {bf}2\right)^2
-            + 3\left( \frac {fb}2 \right)^2 = a^2 + abf + (fb)^2 \in \Z. 
+            \abs{a + fb \frac{\sqrt{-3}-1}2}^2 = \left (a - \frac {bf}2\right)^2
+            + 3\left( \frac {fb}2 \right)^2 = a^2 - abf + (fb)^2 \in \Z. 
         \end{equation*}
     \item All units have invertible absolute value, hence we can conclude
         that if $\omega$ is a unit, it has absolute value $1$. This
@@ -91,7 +92,7 @@ $a = bq + r$ and either $r = 0$ or $n(r) < n(b)$.
         and $a = qb + r$.
         The idea is simple. We try to approximate $\frac ab \in K = \Frac(\cO_K)$ by
         some algebraic integer
-        $q = x + y\sqrt d \in \cO_K$ such that $\abs{N(\frac ab - q)} < 1$. Once we
+        $q \in \cO_K$ such that $\abs{N(\frac ab - q)} < 1$. Once we
         found such a $q$, we set $r = a - qb \in \cO_K$ and find
         \begin{equation*}
             \nu(r) = \abs{N(r)} = \abs{N(b)N\left(\frac ab -q \right)}
