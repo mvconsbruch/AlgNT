@@ -1,0 +1,91 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 2}
+\end{center}
+
+\exercise{1}
+Let $K = \Q(2^{1/3})$. Compute $\Norm_{K/\Q}(x)$ and $\Tr_{K/\Q}(x)$ for 
+$$ x \in \{2023, 2^{1/3}, 2^{1/3}-1, (2^{1/3}+1)^2\}.$$
+
+\textbf{Solution.} Note that $[K:\Q] = 3$, as $K$ is generated as a $\Q$-vector
+space via $(1,2^{1/3}, 2^{2/3})$. For any $x \in K$, let $\mu_x: K \to K$ denote
+the $\Q$-linear vector space endomorphism of $K$ given by $\mu_x(\alpha) = x
+\alpha$. Now we have 
+$\Norm_{K/\Q}(x) = \det(\mu_x)$ and $\Tr_{K/\Q}(x) = \Tr(\mu_x)$. We will think
+of $K$
+as $\Q^3$, by the basis given above. To calculate trace and norm, simply
+express $\mu_x$ with respect to this basis as a matrix, then calculate
+determinant and trace of the matrix obtained this way. I will not do this here.
+
+\exercise{2}
+Let $K/F$ be a finite field extension. 
+
+\begin{itemize}
+    \item Show that $\Tr_{K/F}(\lambda x + \mu y) = \lambda \Tr_{K/F}(x) + \mu
+        \Tr_{K/F}(y)$ for all $x,y \in K$ and $\lambda, \mu \in F$.
+    \item Show that $\Norm_{K/F}(xy) = \Norm_{K/F}(x) \Norm_{K/F}(y)$.
+\end{itemize}
+
+\textbf{Solution.}
+This also follows directly from the description of norm and trace as determinant
+and trace of the associated $F$-linear endomorphism on $K$. Let for any $x \in K$
+$\mu_x: K \to K$ denote the corresponding $F$-linear maps, similar to
+the notation in the solution of exercise $1$. Note that
+$\mu_{(l \mu_x + m \mu_y)} = l \mu_x + m \mu_y$ for all $x,y \in K$ and $m,l
+\in F$. Knowing this, the first
+statement becomes $\Tr(l \mu_x + m \mu_y) = l \Tr(\mu_x) + m \Tr(\mu_y)$, which
+is known from linear algebra. Similarly we find that 
+$\mu_{xy} = \mu_x \mu_y$, so that the second statement becomes 
+$\det(\mu_{xy} )=  \det(\mu_x \mu_y) = \det(\mu_x) \det(\mu_y)$. This is also
+known from linear algebra.
+
+\exercise{3}
+Show that $\cO_K = \Z[\sqrt 2]$ contains infinitely many units.
+
+\textbf{Solution.}
+Write $K = \Q(\sqrt 2)$, $\cO_K = \Z[\sqrt 2]$. If we knew Dirichlet's unit
+theorem, we'd directly find that $\cO_K^\times \cong \mu(K) \times \Z^{r+s-1}$,
+where $r$ is the number of real embeddings of $K$ (which is $2$), $s$ is the
+number of conjugate complex embeddings (which is $0$), and $\mu(K)$ is the
+group of roots of unity of $K$, which is $\Z/2\Z$. Hence we'd obtain
+$\cO_K^\times \cong \Z/2\Z \times \Z$. 
+
+In our case, a simple calculation shows that $\cO_K^\times = \{x \in 
+\Z[\sqrt 2] \mid \Norm(x) = 1\}$. Writing $x = a + \sqrt 2 b \in \cO_K$, we have
+$\Norm(x) = a^2 - 2b^2$. Hence the units are in bijection with the solutions of
+the Pell equation $a^2 - 2b^2 = 1$. Now, note that we have the trivial units $\pm 1$.
+But there is also the non-trivial solution $(3 + 2\sqrt 2)$. Now all of its powers
+are units as well, and it is easy to see that $(3 + 2 \sqrt 2)^k \neq 
+1$ for all $k \neq 0$ by taking real absolute value. 
+
+
+\exercise{4}
+Let $A$ be an integral domain and let $M$ be a finitely generated torsion-free $A$-module, i.e., $am = 0$ implies $a = 0$ or $m = 0$. Show that there exist $r \in \Z_{\geq 0}, a \in A\setminus \{0\}$ and a submodule $N$ of $M$ such that $N$ is free
+of rank $r$ and $aM \subseteq N$. Deduce that $M$ is free if $A$ is a PID.
+
+\textbf{Solution.} Let $(m_1, \dots, m_n)$ be a generating tuple for $M$. We begin
+with $i = 1$, $a_1 = 1$ and $N_1 = (m_1)$. If $N_1 = M$ we are done.
+Otherwise, either $m_2 \in (m_1)$, in which
+case $a_2(m_1, m_2) \subseteq (m_1) \eqqcolon N_2$ for some $a_2 \in A$, or $m_2
+\not \in (m_1)$, in which case we set $N_2 \coloneqq N_1 + (m_2) = (m_1, m_2)$, which
+is free, and $a_2 = 1$. We continue this procedure to obtain
+for every $1 \leq r \leq n$ a free submodule $N_r \subseteq M$ and an integer $a_r$
+with $a_1a_2 \cdots a_r (m_1, \dots, m_r) \subseteq N_r$. After terminating, we set 
+$a = a_1 \cdots a_n$ and $N = N_n$ (that's cursed) to find $a(m_1,
+\dots, m_n) = aM \subseteq N$. As $N$ is a free module, the first part of the
+exercise is done. 
+
+If $A$ is additionally assumed to be a PID, the statement $aM \subseteq N$
+implies that $aM$ is free, as submodules of free modules are free. As $M \cong
+aM$ (multiplication by $a \in A$ is injective because $M$ is torsion-free and
+surjective by construction) this implies that $M$ is free as well.
+
+
+\contactend
+
+\end{document}
