@@ -45,28 +45,37 @@ $\det(\mu_{xy} )=  \det(\mu_x \mu_y) = \det(\mu_x) \det(\mu_y)$. This is also
 known from linear algebra.
 
 \exercise{3}
-Show that $\cO_K = \Z[\sqrt 2]$ contains infinitely many units.
+Show that $\cO_K = \Z[\sqrt 2]$\footnote{I write $\cO_K$ instead of $\Z[\sqrt
+    2]$ because $\Z[\sqrt 2]$ is the ring of integers of the Galois extension
+    $\Q(\sqrt 2)/\Q$, and this notation requires less typing.} 
+    contains infinitely many units. 
 
 \textbf{Solution.}
-Write $K = \Q(\sqrt 2)$, $\cO_K = \Z[\sqrt 2]$. If we knew Dirichlet's unit
-theorem, we'd directly find that $\cO_K^\times \cong \mu(K) \times \Z^{r+s-1}$,
-where $r$ is the number of real embeddings of $K$ (which is $2$), $s$ is the
-number of conjugate complex embeddings (which is $0$), and $\mu(K)$ is the
-group of roots of unity of $K$, which is $\Z/2\Z$. Hence we'd obtain
+If we knew Dirichlet's unit theorem, we'd directly find that $\cO_K^\times
+\cong \mu(K) \times \Z^{r+s-1}$,
+where $r$ is the number of real embeddings of $K = \Q(\sqrt 2)$ (which is $2$),
+$s$ is the number of conjugate complex embeddings (which is $0$), and $\mu(K)$
+is the group of roots of unity of $K$, which is $\Z/2\Z$. Hence we'd obtain
 $\cO_K^\times \cong \Z/2\Z \times \Z$. 
 
 In our case, a simple calculation shows that $\cO_K^\times = \{x \in 
-\Z[\sqrt 2] \mid \Norm(x) = 1\}$. Writing $x = a + \sqrt 2 b \in \cO_K$, we have
+\Z[\sqrt 2] \mid \Norm(x) = \pm 1\}$. Writing $x = a + \sqrt 2 b \in \cO_K$, we have
 $\Norm(x) = a^2 - 2b^2$. Hence the units are in bijection with the solutions of
-the Pell equation $a^2 - 2b^2 = 1$. Now, note that we have the trivial units $\pm 1$.
-But there is also the non-trivial solution $(3 + 2\sqrt 2)$. Now all of its powers
-are units as well, and it is easy to see that $(3 + 2 \sqrt 2)^k \neq 
-1$ for all $k \neq 0$ by taking real absolute value. 
+the Pell equation $a^2 - 2b^2 = \pm 1$, and it suffices to find infinitely many 
+solutions to $a^2 - 2b^2 = 1$. We have trivial solutions $(a,b) = (\pm 1, 0)$.
+But there is also the non-trivial solution $(a,b) = (1,1)$, corresponding to
+$1 + \sqrt 2 \in \cO_K$. Now all powers of this element are units as well, 
+and it is easy to see that $(1 + \sqrt 2)^k \neq 
+1$ for all $k \neq 0$ by taking real absolute value. Hence  the 
+set $\{(1+\sqrt 2)^k \mid k \in \Z\} \subset \cO_K^\times$ is infinite.
 
 
 \exercise{4}
-Let $A$ be an integral domain and let $M$ be a finitely generated torsion-free $A$-module, i.e., $am = 0$ implies $a = 0$ or $m = 0$. Show that there exist $r \in \Z_{\geq 0}, a \in A\setminus \{0\}$ and a submodule $N$ of $M$ such that $N$ is free
-of rank $r$ and $aM \subseteq N$. Deduce that $M$ is free if $A$ is a PID.
+Let $A$ be an integral domain and let $M$ be a finitely generated torsion-free
+$A$-module, i.e., $am = 0$ implies $a = 0$ or $m = 0$. Show that there exist $r
+\in \Z_{\geq 0}, a \in A\setminus \{0\}$ and a submodule $N$ of $M$ such that
+$N$ is free of rank $r$ and $aM \subseteq N$. Deduce that $M$ is free if $A$ is
+a PID.
 
 \textbf{Solution.} Let $(m_1, \dots, m_n)$ be a generating tuple for $M$. We begin
 with $i = 1$, $a_1 = 1$ and $N_1 = (m_1)$. If $N_1 = M$ we are done.
