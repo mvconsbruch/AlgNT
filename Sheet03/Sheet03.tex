@@ -1,0 +1,162 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 3}
+\end{center}
+
+\exercise{1}
+\begin{enumerate}
+    \item Show that $\cO_K^\times = \{x \in \cO_K \mid \Norm_{K/\Q} = \pm 1\}$.
+    \item Suppose that $K = \Q(\sqrt m)$ for some negative squarefree integer
+        $m$. Determine $\cO_K^\times$. 
+\end{enumerate}
+
+\textbf{Solution.}
+\begin{enumerate}
+    \item We know from the lecture that for any $x \in \cO_K$, the norm
+        $\Norm_{K/\Q}(x)$ lies in $\Z$. It is easy to check (for example by 
+        defining the norm via the determinant) that the norm induces a
+        homomorphism of groups $\Norm_{K/\Q}: \cO_K^\times \to \Z^\times$.
+        The claim follows.
+    \item 
+        Note that $K/\Q$ is always an imaginary extension, so there is an
+        embedding $K \inj \C$ (well-defined up to complex conjugation), and
+        $\sigma \in \Gal(K/\Q)$ is just given by complex conjugation. Moreover,
+        the norm is simply given by the square of
+        the complex norm.
+        Write $x = a + b \alpha \in \cO_K$, where $a, b \in \Z$ and 
+        \begin{equation*}
+            \alpha =    \begin{cases}
+                            \sqrt m \quad &\text{ if } m \equiv 2,3 \pmod 4, \\
+                            \frac{1+\sqrt m}2 \quad &\text{ if } m \equiv 1 \pmod 4.
+                        \end{cases}
+        \end{equation*}
+        In the first case, the norm computes as
+        \begin{equation*}
+             \NormKQ (a + b \alpha) = (a + b \alpha)(a + b
+            \sigma(\alpha)) =  a^2 - mb^2,
+        \end{equation*}
+        where $\sigma \in \Gal({K/\Q})$ is the non-trivial element (acting by 
+        complex conjugation after choosing a complex embedding).
+        In the second case we find similarly
+        \begin{equation*}
+             \NormKQ (a + b \alpha) = (a + b \alpha)(a + b
+            \sigma(\alpha)) =  a^2 + ab + b^2 \frac{(1-m)}4.
+        \end{equation*}
+        In both cases the norm is greater than $0$, and we could try to solve
+        the exercise by solving the equations
+        $\NormKQ(a + b\alpha) = 1$ eplicitely. But using the triangle
+        inequality, we can save a lot of work. We find that every
+        unit $x \in \cO_K^\times$ must have trace $\abs{\Tr_{K/\Q}(x)} = \abs{x +
+        \sigma(x)} \leq 2$. Remember that trace and norm also arise as coefficients
+        of the characteristic polynomial of $x$, and hence every unit
+        $x \in \cO_K^\times$ satisfies
+        \begin{equation*}
+            x^2 - \Tr_{K/\Q}(x) x + \NormKQ(x) = x^2 - \Tr_{K/\Q}(x) x + 1 = 0.
+        \end{equation*}
+        As the trace of $x$ over $\Q$ is always an integer, we find 
+        $\Tr_{K/\Q}(x) \in \{-2,-1,0,1,2\}$. 
+        Now there are three tracases:
+        \begin{itemize}
+            \item $\Tr(x) = \pm 2$. In this case $x^2 \mp 2x + 1 = (x \mp 1)^2$
+                and $x = \pm 1$. 
+            \item $\Tr(x) = 0$. In this case $x$ satisfies $x^2 = -1$, hence
+                $x = \pm \ic$. It is easy to check that $\ic \in \cO_K$ iff 
+                $m = -1$. 
+            \item $\Tr(x) = \pm 1$. In this case $x$ is a third of a sixth root of
+                unity. Indeed, if $\Tr(x) = -1$ we find $0 = (x-1)(x^2 + x + 1)
+                = x^3 - 1$, so $x$ is a third root of unity. If $\Tr(x) = 1$ we
+                find $0 = (x+1)(x^2 - x + 1) = x^3 + 1$, so $x$ is a sixth root
+                of unity. Note that we have already seen that $\zeta_3 \in
+                \cO_{\Q(\sqrt{-3})}$, and $\zeta_6 = \frac 12 +
+                \frac{\sqrt{-3}}2$ also lies in this ring of integers.  
+        \end{itemize}
+        Finally, it is not hard to see that two non-isomorphic quadratic number
+        fields have trivial intersection (after choosing embeddings into $\C$).
+        This shows that we have fully characterized the units of
+        the ring of integers of $\Q(\sqrt m)$ for negative square-free $m$. 
+
+
+
+\end{enumerate}
+
+\exercise{2}
+Let $K$ and $L$ be number fields and let $\phi: K \to L$ be a ring homomorphism.
+Show that $\phi(\cO_K) \subset \cO_L$.
+
+\textbf{Solution.} We know that $\cO_L$ is the integral closure of $\Z$ in $L$. This
+means $\cO_L$ is the subring of elements in $L$ that arise as roots of polynomials
+in $\Z$. The same is true for $\cO_K$ in $K$. If any $x \in \cO_K$ is a root of a
+monic polynomial $f_x(T) \in \Z[T]$. Then $\phi(x) \in L$ is a root of $f$ as well,
+as $f(\phi(x)) = \phi(f(x)) = 0$ (remember that any ring morphism is a
+homomorphism of abelian groups. In particular, $\phi$ is the identity
+on $\Z$, and thereby does not change the coefficients of $f$).
+
+\exercise{3}
+Let $m \in \Z \setminus \{0, \pm 1\}$ be a squarefree integer. Using Eisenstein's
+criterion, one shows that $X^3 -m \in \Q[X]$ is irreducible (you do not need to check
+this). Set $K = \Q[X]/(X^3-m \Q[X])$, we write $x$ for the image of $X$ in $K$
+so that $x^3 = m$. 
+\begin{enumerate}
+    \item Show that $\Delta_{K/\Q}(1,x,x^2) = -3^3 m^2$.
+    \item Let $a,b,c \in \Q$. Compute $\Norm_{K/\Q}(a + bx + cx^2)$.
+\end{enumerate}
+
+\textbf{Solution.} 
+\begin{enumerate}
+    \item The Galois group of $K$ over $\Q$ is of degree $3$ and generated by the 
+        morphism sending $x$ (a primitive element of $K$) to $\zeta_3 x$, at least 
+        after embedding $K$ into $\C$ (say). By Lemma 1.32 in the script we obtain
+        \begin{equation*}
+            \Delta_{K/\Q}(1,x,x^2) = \det \begin{pmatrix}
+                                            1 & x & x^2 \\
+                                            1 & \zeta_3 x & \zeta_3^2 x \\
+                                            1 & \zeta_3^2 x & \zeta_3 x^2
+                                          \end{pmatrix}^2.
+        \end{equation*}
+        The determinant of the matrix is readily computed to $3x^3(\zeta_3^2 - 
+        \zeta_3)$, which has square $9x^6(-3) = -3^3m^2$, as desired.
+
+    \item Let $\alpha = a + bx + cx^2$. Let $B$ be the basis $(1,x,x^2)$ of $K$
+        as a $\Q$ vector space. Then $\alpha$ sends $1$ to the vectors
+        $(a,b,c)$, $x$ to the vector $(mc, a, b)$ and $x^2$ to the vector
+        $(mb, mc, a)$. We find that as a matrix with respect to $B$, 
+        multiplication by $\alpha$ is given by
+        \begin{equation*}
+            \begin{pmatrix} 
+                a  & mc & mb \\
+                b  & a  & mc  \\
+                c  & b  & a
+            \end{pmatrix},
+        \end{equation*}
+        and the determinant of this matrix is (hopefully)
+        \begin{equation*}
+            a^3 + mb^3 + m^2 c^3 - 3mabc.
+        \end{equation*}
+        This is $\NormKQ(\alpha)$.
+\end{enumerate}
+
+\exercise{4}
+To the right, you do not see the flag of Nepal. The ration of its height to its 
+width is equal to a number $\alpha \in \R$ such that $K \coloneqq \Q(\alpha)
+= \Q(\sqrt{59-24\sqrt 2})$.
+\begin{enumerate}
+    \item Show that $[K:\Q]=4$ and that 
+        \begin{equation*}
+            \left(1, \sqrt{59 - 24\sqrt 2}, \sqrt 2, \sqrt2 \sqrt{59- 24\sqrt 2}
+                \right)
+        \end{equation*}
+        is a $\Q$-basis of $K$.
+    \item Show that $\beta \coloneqq (-1 + \sqrt{59 - 24\sqrt 2}/\sqrt 2 \in \cO_K$. 
+    \item Set $F = \Q(\sqrt 2)$. Show that $2(59- 24\sqrt 2) \cO_K \subset
+        \cO_F[\beta]$. 
+\end{enumerate}
+
+
+\contactend
+
+\end{document}
