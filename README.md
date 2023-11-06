@@ -6,7 +6,7 @@ Exercise sessions start at 8:30!
 
 
 ## Solutions to the exercise sheets
-Warning: These are non-official, there might be errors. If you find errors or have questions, feel free to write me :)
+Warning: These are my preperations for the exercise sessions. There might be errors, some solutions might even be completely wrong. If you think you found an error or have questions regarding these solutions, feel free to write me :)
 
 * [Sheet 1](Sheet01/Sheet01.pdf) (mostly) results on algebraic integers.
 * [Sheet 2](Sheet02/Sheet02.pdf) Computations with norm and trace, a integral extension of the integers with infinitely many units, all finite free modules over integral domains are submodules of a free module.
