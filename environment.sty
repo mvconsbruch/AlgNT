@@ -2,13 +2,14 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern, setspace}
-\usepackage{amsmath, amssymb, mathtools, amsthm, mathrsfs}
+\usepackage{enumitem}
+\usepackage{amsmath, amssymb, amsthm, mathrsfs}
+\usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{tikz-cd}
 \usepackage{adjustbox}
 \usepackage{subfiles}
 \usepackage{hyperref}
-
 % llbracket and rrbracket
 \usepackage{stmaryrd}
 % todonotes + margin gegen error
@@ -151,7 +152,7 @@
 \renewcommand{\div}{\operatorname{div}}
 \renewcommand{\o}{\varnothing}
 \renewcommand{\O}{\mathcal O}
-\renewcommand{\empty}{\varnothing}
+%\renewcommand{\empty}{\varnothing} % CAUSES TROUBLE WITH ENUMITEM!
 \newcommand{\D}{\partial}
 \newcommand{\dc}{\mathrm{\,d}} 
 \newcommand{\tensor}{\otimes}
