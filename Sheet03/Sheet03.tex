@@ -44,11 +44,14 @@
             x\underbrace{(x^{d-1} + a_{d-1}x^{d-2} + \dots + a_2 x + a_1)}_{= \mp x^{-1} \in \cO_K} = \mp 1.
         \end{equation*}
     \item 
-        Note that $K/\Q$ is always an imaginary extension, so there is an
-        embedding $K \inj \C$ (well-defined up to complex conjugation) and
-        the unique non-trivial element $\sigma \in \Gal(K/\Q)$ is given by
-        complex conjugation. Moreover, the norm is simply given by the square
-        of the complex absolute value.
+        Note that $K/\Q$ is always an imaginary extension, there is an
+        embedding $K \inj \C$ given by 
+        $\sqrt{-m} \mapsto \sqrt m \ic$ (well-defined up to complex conjugation). 
+        The unique non-trivial element $\sigma \in \Gal(K/\Q)$ is given by
+        $\sqrt{-m} \mapsto - \sqrt{-m}$. 
+        Hence, thinking of $K$ as a subfield of $\C$, the Galois group acts by
+        complex conjugation, and the norm is given by the square of the complex
+        absolute value: $\NormKQ(x) = x\sigma(x) = \abs x^2$. 
 
         In what follows, we'll always consider $K$ a subfield of $\C$. By part 1, we know
         that all units have absolute value $1$, hence they lie on the unit circle. 
