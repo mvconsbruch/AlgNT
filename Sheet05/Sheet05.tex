@@ -1,0 +1,216 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{fancyvrb} % to have verbatim input from solutions.py
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 5}
+\end{center}
+
+\exercise{1}
+Let $m \in \Z \setminus\{0, \pm 1\}$ be a squarefree integer. Using Eisenstein's
+criterion, one shows that $X^3 - m \in \Q[X]$ is irreducible. Let $K =
+\Q[X]/(X^3 -m)$ and write $x$ for the image of $X$ in $K$, so that $x^3 = m$.
+Let $z = a + bx + cx^2$. We know that $\NormKQ(z) = a^3 + mb^3 + m^2 c^3 +
+3mabc$ from (ii) and $3\cO_K \subset \Z[x]$ from (iv). 
+\begin{enumerate}
+    \item[(v)] Using (ii) and (iv), show that $\cO_K = \Z[x]$ if $3 \nmid m$
+        and $m \not \equiv \pm 1 \mod 9$. 
+\end{enumerate}
+
+\textbf{Solution.}
+
+\begin{itemize}[wide, labelindent=0pt]
+\item[(v)] Let $z = a + bx + cx^2 \in \cO_K$. We already know that 
+    $3z \in \Z[x]$, so the only thing that can go wrong is that there
+    are (single) 3's in the denominator's of $a$, $b$ or $c$. 
+    We also know that $\NormKQ(3z) = 3^{[K:\Q]}\NormKQ(z) \in 27\Z$. 
+    Write $a' = 3a$, $b' = 3b$ and $c' = 3c$. Now $a', b', c' \in \Z$ and we obtain
+    \begin{equation*}
+    a'^3 + mb'^3 + m^2 c'^3 - 3ma'b'c' \equiv 0 \pmod {27}.
+    \end{equation*}
+    One can check that there are no non-trivial solutions (that is, no
+    solutions without each number divisible by 3).
+    Below (and in the github repository) is a snippet of \href{solutions.py}{python3
+    code} that does exactly that.
+    \lstinputlisting{solutions.py}
+    Executing this, we find that there are no solutions. 
+
+    Alternatively, looking at the equivalence mod $3$ gives conditions to $a',
+    b', c' \pmod 3$, and one can deduce that there are only trivial solutions
+    that way.
+\end{itemize}
+
+\exercise{2}
+To the right, you do not see the flag of Nepal. The ration of its height to its 
+width is equal to a number $\alpha \in \R$ such that $K \coloneqq \Q(\alpha)
+= \Q(\sqrt{59-24\sqrt 2})$.
+\begin{enumerate}
+    \item[(iv)]  Using a computer, one finds that 
+        \begin{equation*}
+            \Delta_{K/\Q} \left(1, \alpha, \sqrt 2, \sqrt 2 \alpha \right)
+            = 2^{10} \cdot 17 \cdot 137
+        \end{equation*}
+        Deduce from this together with (iii) that 
+        $2 \cO_K \subset \cO_F[\beta] = \cO_F + \beta \cO_F$. 
+    \item[(v)]  Let $\xi = x + y\beta \in \cO_K$ with $x,y \in F$. 
+        We know from $(iv)$ that $x, y \in \frac 12 \cO_F = \allowbreak
+        \frac 12 \Z + \frac 1{\sqrt 2} \Z$. Deduce from 
+        $\Norm_{K/F}(\xi) \in \cO_F$ that $x^2 - \sqrt 2 xy - y^2 \in \cO_F$. 
+    \item [(vi)] Using (iv) and (v), show that $\cO_K = \cO_F[\beta]$. 
+\end{enumerate}
+
+\textbf{Solution.}
+\begin{enumerate}[labelindent=0pt, wide]
+    \item[(iv)]  There are quite a few symbols flying around, let's collect them.
+        We have $\alpha = \sqrt{59 - 24\sqrt 2}$, $\beta =
+        \frac{\alpha-1}{\sqrt 2}$, in particular $\cO_F[\alpha] \subset
+        \cO_F[\beta]$.
+        We defined $F = \Q(\sqrt 2)$, and we know from the lecture that
+        $\cO_F = \Z[\sqrt 2]$. Part (iii) showed that 
+        $2 \alpha^2 \cO_K \subset \cO_F[\beta]$.
+        We know that
+        $$\Delta_{K/\Q}(1, \alpha, \sqrt 2, \sqrt 2 \alpha) \cO_K \subset \Z +
+        \alpha \Z + \sqrt 2 \Z + \sqrt 2 \alpha \Z = \cO_F + \alpha \cO_F
+        \subset \cO_F[\beta].$$
+        Write $M \coloneqq \Z + \alpha \Z + \sqrt 2 \Z + \sqrt 2 \alpha \Z$.
+        Basically by the results about the interplay of linear transformations
+        and the discriminant, we find (this is also in the lecture)
+        \begin{equation*}
+            \Delta_{K/\Q}(1, \alpha, \sqrt 2, \sqrt 2 \alpha) 
+            = [\cO_K:M]^2 \Delta_{K/\Q} = 2^{10} \cdot 17 \cdot 137.
+        \end{equation*}
+        From this we find $[\cO_K:M] \mid 2^5=32$. 
+        Let $J \subset \cO_F$ be the ideal defined by $\{r \in \cO_F
+        \mid \forall x \in \cO_K: rx \in \cO_F[\beta]\}$. Part (iii) and 
+        the above show that $(32, 2\alpha^2) \subset J$. Now we just have to
+        calculate:
+        \begin{multline*}
+            (32, 2\alpha^2) = (32, 2 (59 - 24 \sqrt 2)) = (32, 4(59 - 24 \sqrt 2),
+            2\alpha^2) \\ = (32, 4\cdot 59 - 3 \cdot 32\sqrt 2, 2 \alpha^2)  = 
+            (4, 2(59 - 24 \sqrt 2)) = (2)
+        \end{multline*}
+        Hence $2 \subset (J)$ and we are done. 
+
+    \item[(v)] This is just a matter of calculating $\Norm_{K/F}(x + y\beta)$.
+        First note that $K = F(\alpha)$ is of degree $2$, with Galois group
+        generated by the morphism generated by $\alpha \mapsto -\alpha$. 
+        We have
+        \begin{equation*}
+            \sigma(x + y\beta) = x + y\sigma \left( \tfrac{\alpha-1}{2} \right)
+            = x - y\tfrac{1}{\sqrt 2} - y\tfrac{\alpha}{\sqrt 2}
+        \end{equation*}
+        and one calculates that 
+        \begin{multline*}
+            \Norm_{K/F}(x+y\beta) = (x - \tfrac{y}{\sqrt 2})^2 - \tfrac{\alpha^2
+            y^2}2 = x^2 - \sqrt 2 xy + \tfrac{y^2}2 - \tfrac{(59 - 24\sqrt 2)}2 y^2
+            \\
+            = \underbrace{x^2 - \sqrt 2 xy - y^2}_{\therefore \in \cO_F} - 
+            \underbrace{28y^2 + \tfrac{24}{\sqrt 2}y^2}_{\in \cO_F}.
+        \end{multline*}
+        Here we used that $y \in \frac 12 (\Z + \sqrt 2 \Z)$, so that 
+        $y^2$ has at most a four in its denominator.
+
+    \item[(vi)] The inclusion $\cO_F[\beta] \subset \cO_K$ is already
+        known. For the reverse inclusion, take any $\xi = x + y\beta$ as in (v).
+        Now we know that $x^2 - \sqrt 2 xy - y^2 \in \cO_F = \Z + \sqrt 2 \Z$. 
+        Write $2x = x_1 + \sqrt 2 x_2$ and $2y= y_1 + \sqrt 2 y_2$. The integrality 
+        condition yields two equations modulo $4$, as we have
+        \begin{multline*}
+            \Norm_{K/F}(2\xi) = x_1^2 + 2x_2^2 - 2(x_1 y_2 + x_2 y_1) - y_1^2 -
+            2y_2^2 \\ 
+            + \sqrt 2\bigg ( 2x_1x_2 - x_1 y_1 - 2x_2y_2 -2y_1y_2 \bigg) \in
+            4(\Z +
+            \sqrt 2 \Z).
+        \end{multline*}
+        One can again ask a computer if this has a non-trivial solution, and the
+        computer will say \texttt{no}:
+        \lstinputlisting{solutions2.py}
+        
+
+\end{enumerate}
+
+\exercise{3} Find an integral domain $R$ and a non-zero prime ideal
+$\mathfrak P \subset R$ such that $\mathfrak P^{-1} = R$.
+
+\textbf{Solution.}
+First remember what the inverse ideal was. If $I \subset R$ is any ideal, 
+then $I^{-1} = \{r \in \Frac(R) \mid \forall x \in I: r x \in R  \}$. From here
+we can directly see that $\mathfrak P$ cannot be a principal Ideal; if 
+$\mathfrak P = (p)$ for some $p \in R$, $\mathfrak P^{-1}$ would simply be given
+by $\mathfrak P^{-1}= p^{-1} R \neq R$. So let's consider the simplest
+non-principal ideal we know: The ideal $(x,y) \subset k[x,y]$ for some field $k$. 
+It is prime (even maximal, why?\footnote{Because $k[x,y]/(x,y) \cong k$ is a
+field.}), and we find that
+\begin{equation*}
+    (x,y)^{-1} = \{r \in k(x,y) \mid rx \in k[x,y] \wedge ry \in k[x,y]\}
+    = x^{-1}k[x,y] \cap y^{-1}k[x,y] = k[x,y].
+\end{equation*}
+Thus, we have found an example.
+
+
+\exercise{4} Let $I$ denote the ideal $(2, 1 + \sqrt{-3})$ of the ring
+$\Z[\sqrt{-3}]$. 
+\begin{enumerate}
+    \item Show that $I \neq (2)$. 
+    \item Show that $I^2 = 2I$. 
+\end{enumerate}
+$\Z[\sqrt{-3}]$ is not a Dedekind domain.
+
+\textbf{Solution.}
+\begin{enumerate}[labelindent=0pt, wide]
+    \item There are many ways to solve this, but let's look at residual rings, 
+        that is, calculate $\Z[\sqrt{-3}]/I$. We have $\Z[\sqrt{-3}] \cong
+        \Z[X]/(X^2 - 3)$, hence $$\Z[\sqrt{-3}]/I \cong 
+        \Z[X]/(X^2 - 3, 2, 1+X) \cong (\Z/2\Z)[X]/(X^2-1, X+1) \cong 
+        (\Z/2\Z).$$
+        Meanwhile, we have 
+        \begin{equation*}
+            \Z[\sqrt{-3}]/(2) \cong (\Z/2\Z)[X]/(X^2 - 1) \cong 
+            (\Z/2\Z)[X]/(1-X)^2 \cong (\Z/2\Z)^{\oplus 2}.
+        \end{equation*}
+        Here, the last ismorphism is to be taken as an isomorphism of modules. 
+        In particular, we find $I \neq (2)$, as the corresponding residue rings
+        are not isomorphic. 
+    \item We have $I^2 = (4, 2 + 2 \sqrt{-3}, -2 + 2 \sqrt{-3})$, which
+        can be seen simply by multiplying generators. But the last 
+        generator is the difference between the first two, so we find 
+        \begin{equation*}
+            I^2 = (4, 2 + 2 \sqrt{-3}, -2 + 2 \sqrt{-3})
+            =( 4, 2 + 2 \sqrt{-3}) = 2I.
+        \end{equation*}
+        Note that this in particular implies that factorization of an ideal
+        into prime factors is not unique: $I$ is prime, and 
+        one factorization is given by $I^2 = I\cdot I$. But we have
+        $I\cdot I = (2)\cdot I$, and $(2) \neq I$.
+\end{enumerate}
+
+
+\contactend
+\end{document}
