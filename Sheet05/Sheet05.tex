@@ -164,8 +164,11 @@ First remember what the inverse ideal was. If $I \subset R$ is any ideal,
 then $I^{-1} = \{r \in \Frac(R) \mid \forall x \in I: r x \in R  \}$. From here
 we can directly see that $\mathfrak P$ cannot be a principal Ideal; if 
 $\mathfrak P = (p)$ for some $p \in R$, $\mathfrak P^{-1}$ would simply be given
-by $\mathfrak P^{-1}= p^{-1} R \neq R$. So let's consider the simplest
-non-principal ideal we know: The ideal $(x,y) \subset k[x,y]$ for some field $k$. 
+by $\mathfrak P^{-1}= p^{-1} R \neq R$. Similarly, it was part of the lecture
+that for any prime $\mathfrak P$ of a Dedekind domain $R$, $\mathfrak P^{-1}
+\supsetneq R$.\footnote{Thanks to Prof. Dill for pointing this out!} So let's
+consider the simplest non-principal ideal we know: The ideal $(x,y) \subset
+k[x,y]$ for some field $k$. 
 It is prime (even maximal, why?\footnote{Because $k[x,y]/(x,y) \cong k$ is a
 field.}), and we find that
 \begin{equation*}
@@ -208,7 +211,9 @@ $\Z[\sqrt{-3}]$ is not a Dedekind domain.
         Note that this in particular implies that factorization of an ideal
         into prime factors is not unique: $I$ is prime, and 
         one factorization is given by $I^2 = I\cdot I$. But we have
-        $I\cdot I = (2)\cdot I$, and $(2) \neq I$.
+        $I\cdot I = (2)\cdot I$, and $(2) \neq I$. Note however that 
+        uniqueness is not the only thing that fails, the ideal $(2)$
+        doesn't even have a decomposition into prime ideals. 
 \end{enumerate}
 
 
