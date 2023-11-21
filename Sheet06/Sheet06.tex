@@ -1,0 +1,179 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{fancyvrb} % to have verbatim input from solutions.py
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 6}
+\end{center}
+
+\exercise{1}
+Let $K$ be a number field. Show that $\cO_K$ has infinitely many
+prime ideals.
+
+\textbf{Solution.}
+There are many ideas one could use. For example, the statement is a direct 
+consequence of the lying over theorem for integral extensions. But we proof this
+mimicking euclid's proof. Assume there is only a finite number of primes
+$\fp_1, \dots, \fp_n$. Let $n \in \Z$ be an integer such that 
+$n\Z = \fp_1 \cdots \fp_n \cap \Z$. Now $(n+1)\cO_K$ is a prime ideal not contained
+in any of the ideals $\fp_1, \dots, \fp_n$. In particular, decomposition into prime ideals
+cannot hold. This is a contradiction.
+
+\exercise{2}
+Let $m \in \Z$ be negative and squarefree with $m \equiv 1$ mod $4$ and
+set $K = \Q(\sqrt m)$. We assume that $\cO_K$ is a UFD (this is 
+used in parts (ii) and (iv)).
+\begin{enumerate}
+\item Let $p$ be a prime number and $k \in \Z$ such that 
+    $p \mid k^2 - k + \frac{1-m}4$. Show that $p$ is not a 
+    prime element in $\cO_K$.
+\item Let $p$ be as in $(i)$. Show that there exists $u,v$ in $\cO_K$
+    such that $p \equiv uv$ and $\NormKQ(u) = p$. 
+\item Let $p$ be a prime number of the form $\NormKQ(u)$ 
+    for some $u \in \cO_K$. Show that $p \geq (1-m)/4$. 
+\item Suppose that $m < -3$. Deduce that every number of the form
+    $k^2 - k + \frac{1-m}4$ with $0 \leq k \leq \frac{-3-m}4$ is prime.
+\end{enumerate}
+\textbf{Solution.}
+\begin{enumerate}[labelindent=0pt, wide]
+    \item Let $\alpha = \left(\frac{1+\sqrt m}2\right)$. Then we can factor
+        $k^2 - k + \frac{1-m}4 = (k - \alpha)(k - \sigma(\alpha))$, where $\sigma$ is
+        complex conjugation (in particular, 
+        $k^2-k+\frac{1-m}4 = \NormKQ(k-\alpha)$). We know that $(1,\alpha)$ is
+        a $\Z$-basis for $\cO_K$, and wee see that $k-\alpha, k-\sigma(\alpha)
+        \not \in p\cO_K$. Hence $p\cO_K$ is not a prime ideal, and $p$ is
+        not prime.
+    \item We make use of the fact that $\cO_K$ is a UFD. Let $p = q_1 \dots q_r$ be 
+        a decomposition of $p$ into (possibly repeating) irreducible factors
+        (without units).
+        Then $p^2 = \NormKQ(p) = \NormKQ(q_1) \cdots \allowbreak \NormKQ(q_r)$,
+        and we find that
+        $r \leq 2$. As $\cO_K$ is a UFD, $p$ is not irreducible (prime =
+        irreducible in UFDs). This shows that $r \geq 2$, so we
+        have equality, and we get two elements $q_1, q_2$ with $\NormKQ(q_1) = 
+        \NormKQ(q_2) = p$. 
+    \item Write $u = a + b \alpha$. Then 
+        \begin{equation*}
+            \NormKQ(u) = \left( a + \frac b2\right)^2 - \frac{b^2}4m \geq \frac{1-m}4.
+        \end{equation*}
+        Here we used that necessarily $b\neq0$ if this is suppsed to be prime. Also,
+        note that both terms are non-negative.
+    \item Suppose $p_1$ and $p_2$ are prime numbers that divide $k^2 - k + \frac{1-m}4$. 
+        By 2. there are $u_1,u_2$ in $\cO_K$ such that $\NormKQ(u_i) = p_i$. In particular
+        we find by 3. that $p \geq \frac{1-m}4$. Now as $m < -3$, we find that 
+        $$p_1 p_2 \geq \left (\frac{1-m}4 \right)^2 \leq k^2 - k + \frac{1-m}4.$$
+        The last inequality rewrites as
+        \begin{equation*}
+            \left(\frac{1-m}4\right) \left(\frac{1-m}4 - 1 \right) \leq
+                k(k-1),
+        \end{equation*}
+        which is only possible if $k \geq \frac{1-m}4$ or $k < 0$.
+\end{enumerate}
+\textbf{Remark.} The last statement implies the funny result that $k^2 - k + 41$
+is a prime for all integers $0 \leq k < 41$, as $\cO_{\Q(\sqrt{-163})}$ is known 
+to be a UFD.
+
+
+\exercise{3}
+Let $K$ be a number field. Let $I$ and $J$ be ideals of 
+$\cO_K$ and let $\sigma: K \to K$ be a field automorphism. Recall that 
+$\sigma(\cO_K) \subset \cO_K$.
+\begin{enumerate}
+    \item Show that $\sigma(I)$ is an ideal of $\cO_K$.
+    \item Show that $\sigma(I)$ is prime if $I$ is prime.
+    \item Show that $\sigma(IJ) = \sigma(I)\sigma(J)$.
+\end{enumerate}
+\textbf{Solution.}
+\begin{enumerate}[labelindent=0pt, wide]
+    \item For $x \in I$, $r \in \cO_K$ we have 
+        $$r\sigma(x) = \sigma (\sigma^{-1}(r) x) \in \sigma(I).$$
+        Hence $\sigma(I)$ is an ideal.
+    \item Same trick: If $I$ is prime and $xy \in \sigma(I)$, then 
+        $\sigma^{-1}(x) \sigma^{-1}(y) \in I$, so by primality of $I$ 
+        and without loss of generality $\sigma^{-1}(x) \in I.$ But now 
+        $x \in \sigma(I)$, so $\sigma(I)$ is prime. 
+    \item $\sigma(IJ) = \{\sigma(x)\sigma(y) \mid x \in I, y \in J\} =
+        \sigma(I) \sigma(J).$
+\end{enumerate}
+
+
+\exercise{4}
+Let $R$ be a Dedekind domain.
+\begin{enumerate}
+    \item Let $I$ and $I_1, \dots, I_n$ be ideals such that 
+        $I_j \nmid I$ for all $j = 1, \dots, n$. Show that 
+        \begin{equation*}
+            I\setminus(I_1 \cup \dots \cup I_n) \neq \emptyset.
+        \end{equation*}
+    \item Suppose that $R$ has at most finitely many prime ideals. 
+        Show that $R$ is a principal ideal domain.
+\end{enumerate}
+\textbf{Solution.}
+The following lemma will prove useful (and is really just a weak form of 
+4.1):
+\begin{lem}\label{lem:1}
+    Let $R$ be a Dedekind domain and let $\fp_1, \dots, \fp_n$ prime ideals of $R$.
+    Let $e_1 \dots, e_n \in \Z$ be arbitrary integers. Then there is some 
+    $r \in R$ with $r \in \fp_j^{e_j}\setminus \fp_j^{e_{j+1}}$ for all $j$. 
+\begin{proof}
+    We'll make use of the Chinese remainder theorem. We have the map
+    \begin{equation*}
+        R \to R/(\fp_1^{e_1+1} \cap \dots \fp_n^{e_n+1}) \cong
+        \prod_j R/\fp_j^{e_j+1}.
+    \end{equation*}
+    Now choose non-zero elements $s_j \in \fp_j^{e_j}/\fp_j^{e_j+1} \subset
+    R/\fp_j^{e_j+1}$. Any element $r$ in the preimage of 
+    \begin{equation*}
+        (s_1, \dots, s_n) \in \prod_j R/\fp_j^{e_j+1}
+    \end{equation*}
+    works.
+\end{proof}
+\end{lem}
+\begin{enumerate}
+    \item We are in the Dedekind situation, so of course we look at the prime
+        factorization of the Ideals at hand. Let 
+        $I = \fp_1^{e_1} \dots \fp_m^{e_m}$. Also, by the divisibility
+        assumption, for 
+        any $j$ there is some prime ideal $\fq_j$ and some integer $f_j$ 
+        such that $\fq_j^{f_j} \mid I$, $\fq_j^{f_j+1} \nmid I$ and 
+        $\fq_j^{f_j+1} \mid J$. Now, there is some element 
+        $r \in R$ with $r \in \fp_i^{e_i}$ for all $i$ (i.e., $r \in I$) and 
+        $r \in \fq_j^{e_j}\setminus\fq_j^{e_j+1}$. Now we are done, as
+        $r \not \in \fq_j^{e_j+1} \supset I_j$ for all $j$. 
+
+    \item As $R$ is a Dedekind domain, it suffices to show that all
+        prime ideals are principal. By assumption there are only finitely many,
+        let's call them $\fp_1, \dots, \fp_n$. We now use lemma $1$ to find an
+        element $x \in R$ with $x \not \in \fp_j$ for $j \neq 1$ and 
+        $x \in \fp_1 \setminus\fp_1^2$. This forces $(x) = \fp_1$. 
+\end{enumerate}
+
+\contactend
+\end{document}
