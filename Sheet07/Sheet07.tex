@@ -1,0 +1,208 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 7}
+\end{center}
+
+\exercise{1}
+\begin{enumerate}
+    \item Let $K$ be a number field and let $n \in \N$. Show that 
+        \begin{equation*}
+            a_n(K) = \# \{I \subset \cO_K \mid I \text{ is an ideal such 
+            that } \Norm(I) = n\}
+        \end{equation*}
+        is finite.
+    \item Let $K = \Q(\sqrt -3)$. Use Theorem 3.11 to determine $a_n(K)$ for all
+        $n \in \{1, \dots, 7\}$, where we use the notation from 1.
+\end{enumerate}
+\textbf{Solution.}
+\begin{enumerate}[labelindent=0pt, wide]
+    \item Let $I \subset \cO_K$ be any ideal. We can write $I = \fP_1^{e_1} \dots
+        \fP_s^{e_s}$ and obtain $$\Norm(I) = \Norm(\fP_1)^{e_1} \cdots
+        \Norm(\fP_s)^{e_s}.$$
+        Note that $p \mid \Norm(\fP)$ if and only if $\fP \mid p\cO_K$. Indeed,
+        if $p \mid \Norm(\fP) = [\cO_K:\fP]$, then multiplication with $p^k$
+        induces the zero-endomorphism on $\cO_K/\fP$, hence $p^k \in \fP$,
+        implying $p \in \fP$, i.e., $\fP \mid p\cO_K$. 
+        On the other hand, if $\fP$ divides $p\cO_K$, then 
+        $\Norm(\fP)$ divides $\Norm(p\cO_K) = p^{[K:\Q]}$, and as
+        $\Norm(\fP) \neq 1$ we find $p \mid \Norm(\fP)$. But 
+        in $\cO_K$ we have a finite decomposition $p \cO_K = 
+        \fP_1^{e_1} \cdots \fP_n^{e_n}$. This implies that there are only finitely
+        many prime ideals in $\cO_K$ with norm divisible by $p$. 
+        But a fortiori there now are only finitely many ideals $I$ with norm
+        $n$.
+\item Note that $\cO_K = \Z[\beta]$ with $\beta = \frac{-1+\sqrt{-3}}2$,
+        which has minimal polynomial $A(T) = T^2 + T + 1$. This implies that
+        $[\cO_K:\Z[\beta]]=1\not \in (p)$ for any prime ideal $(p)$ of $\Z$, so
+        we can apply 3.11 without hesitation. The unit ideal is the only one
+        with norm $1$. To determine the other $a_n(K)$, we first determine the
+        number of prime ideals that have a chance of dividing $(n)$. Here we use
+        3.11. We need factorizations into irreducible factors of $T^2 + T + 1$
+        modulo $2, 3, 5, 7$. These are given by
+        \begin{itemize}
+            \item $T^2 + T + 1 \equiv T^2 + T + 1\pmod 2$
+            \item $T^2 + T + 1 \equiv T^2 + T + 1\pmod 3$
+            \item $T^2 + T + 1 \equiv T^2 + T + 1\pmod 5$
+            \item $T^2 + T + 1 \equiv (T-2)(T-5) \pmod 7$.
+        \end{itemize}
+        Theorem 3.11 now states that the we have the following prime ideals above
+        each $p$:
+        \begin{itemize}
+            \item $\fP_2 = 2 \cO_K + f(\beta) \cO_K$ above $(2)$, its norm is 
+                $\Norm(\fP_2) = 2^2$.
+            \item $\fP_3 = 3 \cO_K + f(\beta) \cO_K$ above $(3)$, its norm is 
+                $\Norm(\fP_2) = 3^2$.
+            \item $\fP_5 = 5 \cO_K + f(\beta) \cO_K$ above $(5)$, its norm is 
+                $\Norm(\fP_2) = 5^2$.
+            \item $\fP_2 = 7 \cO_K + (\beta-2) \cO_K$, $\fP_2' = 
+                7 \cO_K + (\beta-5)$ above $(7)$. These ideals both have norm
+                $7$.
+        \end{itemize}
+        Here we used that if $\fP$ is a prime above $p \in \Z$, 
+        we have $\Norm(\fP_p) = p^{f(\fP|p)}$.
+        By multiplicativity of the norm, we arrive at
+        \begin{equation*}
+            a_2(K) = 0, \quad
+            a_3(K) = 0, \quad
+            a_4(K) = 1, \quad
+            a_5(K) = 0, \quad
+            a_6(K) = 0, \quad
+            a_7(K) = 0.
+        \end{equation*}
+\end{enumerate}
+
+\exercise2
+Let $K=\Q(2^{1/3})$. We know from previous exercise sheets that $[K:\Q] = 3$
+and that $\cO_K = \Z[2^{1/3}]$. Use theorem 3.11 to determine the prime ideal
+factorization of $2 \cO_K, 5\cO_K$ and $7\cO_K$.
+
+\textbf{Solution.} We have seen in previous exercises that 
+$\cO_K = \Z[2^{1/3}]$. Hence we don't have do worry about divisibility
+constraints when using 3.11. The minimal polynomial of $2^{1/3}$ is 
+$A(T) = T^3 - 2$. Again we need to find its factors modulo $2,5, 7$. 
+\begin{itemize}
+    \item Mod 2: $\bar A(T) = T^3 = \bar A_1(T)^3$
+    \item Mod 5: $\bar A(T) = (T-3)(T^2+3T+4) = \bar A_1(T) \bar A_2(T)$
+    \item Mod 7: $\bar A(T) = T^3 - 2 = \bar A_1(T)$. 
+\end{itemize}
+Theorem 3.11 now provides us with explicit formulas for the divisors of 
+$p \cO_K$:
+\begin{itemize}
+    \item $2\cO_K = \bar A_1(2^{1/3})\cO_K = (2^{1/3}\cO_K)^3$
+    \item $5\cO_K = (5\cO_K + \bar A_1(2^{1/3})\cO_K)(5 \cO_K + \bar
+        A_2(2^{1/3})\cO_K)$
+    \item $7\cO_K = 7 \cO_K + \bar A_1(2^{1/3})\cO_K = 7\cO_K$
+\end{itemize}
+
+\exercise3
+Let $P = T^3-T^2-2T-8 \in \Z[X]$, set $K = \Q[T]/P\Q[T]$,
+and let $\alpha$ denote the image of $T$ in $K$. The reduction of $P$ modulo $3$
+has no zero in $\FF_3 = \Z/3\/$ and so is irreducible in $\FF_3[T]$. This
+implies that $P$ is irreducible in $\Q[T]$ (it has no roots, and every factorization
+contains at least one linear term, implying a root). Hence, $K$ is a number field 
+of degree 3. One computes that $\Delta_{K/\Q}(1, \alpha, \alpha^2) = -2^2 \cdot 503$.
+\begin{enumerate}
+    \item Prove that $4\alpha^{-1} \in \cO_K$ and $\Z + \alpha \Z + 
+        4\alpha^{-1}\Z \supsetneq \Z[\alpha].$
+    \item Deduce that $(1, \alpha, 4\alpha^{-1})$ is a $\Z$-basis of $\cO_K$.
+    \item Let $\beta \in \cO_K$ be a primitive element of $K/\Q$,
+        i.e., $K = \Q(\beta)$, and let $A = (a_{ij})_{1 \leq i,j \leq 3}$ 
+        such that 
+        \begin{equation*}
+            \beta^{i-1} = a_{i,1} + a_{i,2}\alpha + a_{i,3}\frac{4}\alpha \quad
+            \text{ for all } i \in \{1,2,3\}.
+        \end{equation*}
+        Show that $2 \mid \det A$ and deduce that $2 \mid [\cO_K:\Z[\beta]]$. 
+\end{enumerate}
+\textbf{Solution.}
+\begin{enumerate}[labelindent=0pt, wide]
+    \item We have $4\alpha^{-1} \in K$, so it suffices to find algebraic relations
+        for $4\alpha^{-1}$.
+        Note that $P(\alpha) = 0$, so that
+        \begin{equation*}
+            (4 \alpha^{-1})^2 = 16 \alpha^{-2} = 
+            2(\alpha^3 - \alpha^2 - 2\alpha) \alpha^{-2} = 2\alpha - 2 -
+            4 \alpha^{-1}.
+        \end{equation*}
+        In particular, $(4 \alpha^{-1})^2 + 4 \alpha^{-1} - (2\alpha +2) = 0$,
+        which is the algebraic relation we are looking for (now
+        $4\alpha^{-1}$ is a root of the monic polynomial 
+        $T^2 + T - 2(\alpha +1) \in \cO_K[T]$).
+
+        For the second part, use that $4\alpha^{-1}$ lies in the left hand
+        side, but not the right hand side (express it with $(1, \alpha, \alpha^2)$
+        as a $\Q$-linear combination to see this). 
+    \item We calculate the discriminant of $(1, \alpha, 4\alpha^{-1})$ and
+        compare it with $\Delta_{K/\Q} = -2^2\cdot 503$.
+        Denote by $M$ the module given by $\Z + \alpha \Z + 4\alpha^{-1} \Z
+        \subset \cO_K$. We have that 
+        $$\Delta_{K/\Q}(1, \alpha, \alpha^2) = [M:\Z[\alpha]]^2 \Delta_{K/\Q}(
+        1, \alpha, 4\alpha^{-1}).$$
+        Using the given fact that $\Delta_{K/\Q}(1, \alpha, \alpha^2) = 
+        -2^2\cdot 503$, we find that $[M:\Z[\alpha]] \mid 2$. Part 1 shows that
+        $[M:\Z[\alpha]] \neq 1$, so we have $[M:\Z[\alpha]] = 2$ and
+        $\Delta_{K/\Q}(1, \alpha, 4\alpha^{-1}) = -503$.
+        The same idea reveals that 
+        \begin{equation*}
+            \Delta_{K/\Q}(1, \alpha, 4\alpha^{-1}) = [\cO_K:M]^2 \Delta_{K/\Q},
+        \end{equation*}
+        but as $\Delta_{K/\Q}\neq 1$ this is only possible if $[\cO_K:M]=1$,
+        i.e., $\cO_K = M$. This is what we had to show.
+    \item We are only interested in residues mod $2$, so it suffices to work out
+        the entries of $A$ mod $2$. But to figure out the coefficients of $A$
+        mod $2$ is the same as working out the coordinates of the residue class
+        of $\beta$ in $\cO_K/2\cO_K$ (which is a $3$-dimensional $\FF_2$-vector
+        space) with respect to the basis given by the residue classes of 
+        $(1, \alpha, 4\alpha^{-1})$.
+        Suppose that we have
+        \begin{equation*}
+            \beta = a + b \alpha + c (4\alpha^{-1}).
+        \end{equation*}
+        Then $$\beta^2 = (a + b \alpha + c (4\alpha^{-1}))^2
+        \equiv a^2 + b^2 \alpha^2 + c^2 (4\alpha^{-1})^2 \pmod 2.$$
+        Note that we have 
+        \begin{equation*}
+            \alpha^2 = \frac {\alpha^3}\alpha = \frac{\alpha^2 + 2\alpha + 8}
+            \alpha = 2 + \alpha + 2 (4 \alpha^{-1}) \equiv \alpha \pmod 2
+        \end{equation*}
+        and 
+        \begin{equation*}
+            (4 \alpha^{-1})^2 = -2 + 2\alpha - 4 \alpha^{-1} \equiv 4\alpha^{-1}
+            \pmod 2.
+        \end{equation*}
+        Hence we find that 
+        \begin{equation*}
+            \beta^2 \equiv a^2 + b^2 \alpha + c^2 (4 \alpha^{-1}) \pmod 2,
+        \end{equation*}
+        and this yields that mod $2$, $A$ is given by the matrix
+        $\left( \begin{smallmatrix}
+        1 & 0 & 0 \\
+        a & b & c \\
+        a^2 & b^2 & c^2 
+        \end{smallmatrix}\right)  $, which has determinant
+        \begin{equation*}
+            \det \mat bc{b^2}{c^2} = bc^2 - cb^2 \equiv 0 \pmod 2.
+        \end{equation*}
+        Now we can use that 
+        \begin{equation*}
+            [\cO_K: \Z[\beta]] = \abs{\det(A)}
+        \end{equation*}
+        implying that $2 \mid [\cO_K: \Z[\beta]]$.
+
+
+\end{enumerate}
+
+\textbf{Remark.} In particular, part 3 shows that there is no such thing as an
+\emph{integral} theorem of the primitive element: There is no primitive element
+$\beta \in K$ such that $\Z[\beta] = \cO_K$. Number fields that satisfy this
+condition are called \emph{monogenic}. According to Wikipedia, the example covered
+in this exercise was the first example of a non-monogenic number field,
+discovered by \textsc{Richard Dedekind}.
+
+
+\contactend
+\end{document}
