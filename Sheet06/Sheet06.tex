@@ -160,13 +160,12 @@ The following lemma will prove useful (and is really just a weak form of
     \item We are in the Dedekind situation, so of course we look at the prime
         factorization of the Ideals at hand. Let 
         $I = \fp_1^{e_1} \dots \fp_m^{e_m}$. Also, by the divisibility
-        assumption, for 
-        any $j$ there is some prime ideal $\fq_j$ and some integer $f_j$ 
+        assumption, for any $j$ there is some prime ideal $\fq_j$ and some integer $f_j$ 
         such that $\fq_j^{f_j} \mid I$, $\fq_j^{f_j+1} \nmid I$ and 
-        $\fq_j^{f_j+1} \mid J$. Now, there is some element 
+        $\fq_j^{f_j+1} \mid I_j$. Now, there is some element 
         $r \in R$ with $r \in \fp_i^{e_i}$ for all $i$ (i.e., $r \in I$) and 
-        $r \in \fq_j^{e_j}\setminus\fq_j^{e_j+1}$. Now we are done, as
-        $r \not \in \fq_j^{e_j+1} \supset I_j$ for all $j$. 
+        $r \in \fq_j^{e_j}\setminus\fq_j^{e_j+1}$
+        (i.e., $r \not \in I_j$).
 
     \item As $R$ is a Dedekind domain, it suffices to show that all
         prime ideals are principal. By assumption there are only finitely many,
