@@ -13,6 +13,9 @@ Warning: These are my preperations for the exercise sessions. There might be err
 * [Sheet 3](Sheet03/Sheet03.pdf) More units of rings of integers, quadratic extensions, cubic extensions, quadratic extensions of quadratic extensions (and fun facts about the flag of Nepal!).
 * [Sheet 4](Sheet04/Sheet04.pdf) Discriminants of quadratic number fields, further calculations with special cubic number fields, first facts about Dedekind domains.
 * [Sheet 5](Sheet05/Sheet05.pdf) Calculations of integer rings are completed (but are painful), inverse of ideals, some algebraic extensions of the integers are not Dedekind.
-* [Sheet 6](Sheet06/Sheet06.pdf) 
+* [Sheet 6](Sheet06/Sheet06.pdf) Rings of integers have infinitely many primes, 
+a certain polynomial only takes on prime values (at least if you don't check for large inputs), ideals behave well with respect to field automorphisms, dedekind rings with finitely many ideals are principal.
+* [Sheet 7](Sheet07/Sheet07.pdf) Number of Ideals with given norm in quadratic
+and cubic extensions, a non-monogenic number field.
 
 ###### Max von Consbruch, email: mvconsbruch(at)uni-bonn(dot)de
