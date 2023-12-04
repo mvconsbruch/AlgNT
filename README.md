@@ -17,5 +17,6 @@ Warning: These are my preperations for the exercise sessions. There might be err
 a certain polynomial only takes on prime values (at least if you don't check for large inputs), ideals behave well with respect to field automorphisms, dedekind rings with finitely many ideals are principal.
 * [Sheet 7](Sheet07/Sheet07.pdf) Number of Ideals with given norm in quadratic
 and cubic extensions, a non-monogenic number field.
+* [Sheet 8](Sheet08/Sheet08.pdf) Ramification of primes, Dedekind coefficients are multiplicative.
 
 ###### Max von Consbruch, email: mvconsbruch(at)uni-bonn(dot)de
