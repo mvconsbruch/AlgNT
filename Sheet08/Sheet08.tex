@@ -1,0 +1,156 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 8}
+\end{center}
+
+\exercise{1}
+Let $K = \Q[\sqrt 7, \sqrt{10}]$. The extension
+$K/\Q$ is Galois (the extension is normal since $K$ is a splitting field of the polynomial
+$(T^2-7)(T^2-10) \in \Q[T]$).
+\begin{enumerate}
+    \item Show that there exist pairwise distinct prime ideals $\fP_1, \dots \fP_4$ of
+        $\cO_K$ such that $3 \cO_K = \fP_1 \cdots \fP_4$. \textit{Hint: Consider
+        $D(\fP|3\Z)$ for a prime ideal $\fP$ of $\cO_K$ lying over $3$.}
+    \item Deduce that $3 \mid [\cO_K:\Z[\alpha]]$ for every $\alpha \in \cO_K$.
+        In particular, $\cO_K$ is not monogenic.
+\end{enumerate}
+
+\textbf{Solution.}
+\begin{enumerate}[labelindent=0pt, wide] 
+    \item As in the hint we will show that 
+        $$D(\fP|3\Z) = \{\sigma \in \Gal(K/\Q) \mid \sigma(\fP) = \fP\} = \{1\}$$
+        for any prime ideal $\fP \subset \cO_K$ dividing $(3)$. This finishes the
+        exercise, as we know from the lecture that $1 = \#D(\fP|3\Z) = e(\fP|3) 
+        f(\fP|3)$.
+        Now (the very useful) Lemma 3.10 implies that 
+        \begin{equation*}
+            4 = [K:\Q] = \sum_{\fP \mid 3\cO_K} e(\fP|3\Z) f(\fP|3\Z) =
+            \sum_{\fP \mid 3\cO_K} 1.
+        \end{equation*}
+        Hence there are four distinct prime divisors of $3\cO_K$.
+
+        The Galois group of $L/K$ is given by $\Z/2\Z \times \Z/2\Z$, which 
+        acts by switching the sign of $\sqrt 7$ and $\sqrt {10}$. Note that 
+        $(\sqrt {10}+1)(\sqrt{10}-1) = 9 \in \fP$ and 
+        $(\sqrt 7 + 1)(\sqrt 7 - 1) = 6 \in \fP$; in both cases we find that one 
+        of the factors must lie in $\fP$. If now $\sigma$ switched the sign
+        of $\sqrt \alpha$ for $\alpha \in \{7, 10\}$, we'd find that 
+        $(\sqrt \alpha \pm 1) + \sigma(\sqrt \alpha \pm 1) = \pm 2 \in \fP$.
+        But we have $3 \in \fP$, so now we find $3-2 = 1 \in \fP$, Contradiction.
+        So there cannot be non-trivial elements in $D(\fP|3)$.
+    \item Assume for sake of contradiction that $3 \nmid [\cO_K:\Z[\alpha]]$ but
+        $K = \Q(\alpha)$. Let $m_\alpha(X)$ be the minimal polynomial of 
+        $\alpha$. Then theorem $3.11$ yields
+        \begin{equation*}
+            m_\alpha(X) \cong P_1(X) P_2(X) P_3(X) P_4(X)
+        \end{equation*}
+        for four distinct (irreducible) polynomials $P_i(X) \in \FF_3[X]$ of
+        degree $f(\fP|3) = 1$. But the only degree $1$ polynomials in $\FF_3[X]$
+        are $X, X-1, X-2$. Contradiction.
+
+\end{enumerate}
+
+
+\exercise{2}
+Let $K$ be a number field, let $L/K$ be an algebraic extension, and let $L_1$ and $L_2$
+be two subfields of $L$ containing $K$ such that the extensions 
+$L_1/K$ and $L_2/K$ are Galois (in particular finite). Let $M$ denote the 
+compositum $L_1 L_2$ of $L_1$ and $L_2$ inside $L$., i.e., the intersection of all 
+subfields of $L$ that contain $L_1 \cup L_2$. Let $\fp$ denote a non-zero prime
+ideal of $\cO_K$.
+\begin{enumerate}
+    \item Show that the extension $M/K$ is Galois.
+    \item Show with an example that the implication "$\fp$ is totally ramified in 
+        both $L_1/K$ and $L_2/K$, so $\fp$ is totally ramified in $M/K$" is false in general.
+    \item Show with an example that the implication "$\fp$ is inert in both $L_1/K$ and
+        $L_2/K$, so $\fp$ is inert in $M/K$" is false in general.
+\end{enumerate}
+\textbf{Solution.}
+We are in the following situation:
+\[\begin{tikzcd}[ampersand replacement=\&]
+	\& L \\
+	\& {L_1L_2=M} \\
+	{L_1} \&\& {L_2} \\
+	\& K \\
+	\& \Q
+	\arrow["{\text{finite}}", from=5-2, to=4-2]
+	\arrow[from=3-1, to=2-2]
+	\arrow[from=3-3, to=2-2]
+    \arrow["\text{Galois}", from=4-2, to=3-3]
+    \arrow["\text{Galois}", from=4-2, to=3-1]
+	\arrow[from=2-2, to=1-2]
+\end{tikzcd}\]
+\begin{enumerate}[labelindent=0pt, wide]
+    \item For us, Galois means separable, finite and normal. Separability
+        follows from the fact
+        that every extension of fields in characteristic $0$ is separable.
+        For normality and finiteness,
+        observe that $L_1$ and $L_2$ are the splitting fields of (finite)
+        families of polynomials. But now $L_1L_2$ is the splitting field of the
+        union of these families. Hence it is normal and finite.
+    \item Remember that a prime $\fp \subset \cO_K$ is said to be totally ramified in 
+        $M$ iff $\fp \cO_M = \fP^{e(\fP|\fp)}$ in $\cO_M$, i.e., iff
+        $e(\fP|\fp) = [M:K]$. Let's just try to create easy example of totally
+        ramified prime ideals. Here remark 3.14 (ii) is of help. For the
+        desired counterexample, set $L_1 = \Q(\sqrt 3)$ and $L_2 = \Q(\sqrt
+        {-1})$. Now take the ideal $(2) \subset \Z$. One can also see that this
+        is ramified in both extensions because $2 \mid \Delta_{L_i/\Q}$ this is
+        theorem 3.22, and this can also quickly be verified using 3.11).
+        Thereby it is automatically totally ramified, because $[L_i : \Q] = 2$.
+        Now the composite field extension $L_1 L_2 = M$ contains the field
+        $L'_1 = \Q[\sqrt{-3}]$, where $(2)$ is inert (this is a routine
+        consequence of 3.11). Now $[L'_1: M]$, and we find that for any prime
+        $\fP\subset M$ above $(2) \subset \Z$, $$e(\fP|2\Z) =
+        e(\fP|2\cO_{L'_1})e(2\cO_{L'_1}|2\Z) \leq [M:L'_1] \cdot 1 = 2$$. In
+        particular, $e(\fP|2\Z) < 4$, so $(2)$ cannot be totally ramified in $M$.
+    \item Same idea. Inert means that 
+        $f(\fP|\fp) = [L:K]$. This time, take $L_1 = \Q(\sqrt 5)$ and $L_2 =
+        \Q(\sqrt {13})$, and the ideal $(2)$ again, which is inert in both
+        extensions (the discriminants are given by $5$ and $13$, respectively).
+        Now the composite contains $\Q(\sqrt{65})$, which has discriminant 65.
+        But $\legendre {65}2 = 1$, so it is ramified there. In particular it
+        cannot be inert, because now for a prime ideal $\fP$ of $\cO_M$ over $(2)$ 
+        we have $e(\fP|2\Z)f(\fP|2\Z) \leq [L:K]$ and $e(\fP|2\Z) \geq 2$. 
+
+    
+\end{enumerate}
+
+\exercise{3}
+Let $K$ be a number field. For $n \in \N = \{1,2,3, \dots\}$, set 
+$a_n(K) = \#\{I \subset \cO_K \mid \Norm(I) = n\}$. Let $m,n$ be coprime natural numbers.
+Show that $a_{mn}(K) = a_m(K)a_n(K)$.
+
+\textbf{Solution.}
+Define $A_n(K) = \{I \subset \cO_K \mid \Norm(I) = n\}$. Then 
+one can see that if $(n,m) = 1$, 
+$$A_n(K) A_m(K) = \{IJ \mid I \subset A_n(K), J \subset A_m(K)\} = 
+A_{nm}(K).$$ 
+Here we used again that Ideals decompose uniquely into prime factors, and 
+that for any $I \in A_{nm}(K)$, the set of prime ideal factors of $I$ that divide
+$n$ and the set of prime ideal factors that divide $m$ are disjoint. 
+
+\textbf{Remark.} In particular, this shows that it is enough to understand 
+$a_{n}(K)$ for prime powers $n$. In analytic number theory, this has some nice
+consequences. There one can define the \textit{Dedekind zeta function} 
+\begin{equation*}
+    \zeta_K(s) = \sum_{n = 1}^{\infty} a_n(K) n^{-s},
+\end{equation*}
+which can be shows to define a holomorphic function for $s \in \C$ with $\Re(s) > 1$.
+This function has a meromorphic continuation to all of $\C$, and it encodes many
+invariants of the number field. For example, by the \textit{analytic class
+number formula}, the residue of $\zeta_K(s)$ of the pole at $s=1$ provides
+information about the class number of $K$.
+The multiplicativity of the coefficients relates directly to there being a 
+\textit{Euler product expansion}
+\begin{equation*}
+    \zeta_K(s) = \prod_{p \in \N} \left( 1 + a_p(K)p^{-s} + a_{p^2}(K) p^{-2s}
+    + \dots \right).
+\end{equation*}
+We will encounter the Dedekind zeta function in upcoming lectures.
+
+\contactend
+\end{document}
