@@ -45,7 +45,7 @@
         modulo $2, 3, 5, 7$. These are given by
         \begin{itemize}
             \item $T^2 + T + 1 \equiv T^2 + T + 1\pmod 2$
-            \item $T^2 + T + 1 \equiv T^2 + T + 1\pmod 3$
+            \item $T^2 + T + 1 \equiv (T-1)^2    \pmod 3$
             \item $T^2 + T + 1 \equiv T^2 + T + 1\pmod 5$
             \item $T^2 + T + 1 \equiv (T-2)(T-5) \pmod 7$.
         \end{itemize}
@@ -54,8 +54,8 @@
         \begin{itemize}
             \item $\fP_2 = 2 \cO_K + f(\beta) \cO_K$ above $(2)$, its norm is 
                 $\Norm(\fP_2) = 2^2$.
-            \item $\fP_3 = 3 \cO_K + f(\beta) \cO_K$ above $(3)$, its norm is 
-                $\Norm(\fP_2) = 3^2$.
+            \item $\fP_3 = 3 \cO_K + (\beta- 1)\cO_K$ above $(3)$, its norm is 
+                $\Norm(\fP_2) = 3$.
             \item $\fP_5 = 5 \cO_K + f(\beta) \cO_K$ above $(5)$, its norm is 
                 $\Norm(\fP_2) = 5^2$.
             \item $\fP_2 = 7 \cO_K + (\beta-2) \cO_K$, $\fP_2' = 
@@ -67,7 +67,7 @@
         By multiplicativity of the norm, we arrive at
         \begin{equation*}
             a_2(K) = 0, \quad
-            a_3(K) = 0, \quad
+            a_3(K) = 1, \quad
             a_4(K) = 1, \quad
             a_5(K) = 0, \quad
             a_6(K) = 0, \quad
