@@ -23,5 +23,6 @@ a certain polynomial only takes on prime values (at least if you don't check for
 and cubic extensions, a non-monogenic number field.
 * [Sheet 8](Sheet08/Sheet08.pdf) Ramification of primes, Dedekind coefficients are multiplicative.
 * [Sheet 9](Sheet09/Sheet09.pdf) The legendre symbol in the context of ramification of primes, discriminants of p-th roots of unity.
+* [Sheet 10](Sheet10/Sheet10.pdf) Fun proof of the infinitude of primes that are 1 mod 4, calculations with discriminants, direct calculation of class groups (without Minkowski's bound).
 
 ###### Max von Consbruch, email: mvconsbruch(at)uni-bonn(dot)de

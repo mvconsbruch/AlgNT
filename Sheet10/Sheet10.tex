@@ -1,7 +1,6 @@
 \documentclass[a4paper,11pt]{article}
 \pagenumbering{arabic}
 \usepackage{../environment}
-\newcommand{\fl}{\mathfrac l}
 \begin{document}
 
 \begin{center}
@@ -54,14 +53,86 @@ Let $m<0$ be a squarefree integer and set $K =\Q(\sqrt m)$.
     \item Show that $\NormKQ(x) > \abs{\Delta_{K/\Q}}/4$ for all $x \in \cO_K\setminus \Z$. 
 \end{enumerate}
 \textbf{Solution.}
+\begin{enumerate}[labelindent=0pt, wide]
+    \item Remember the formula for the discriminant of quadratic number fields:
+        \begin{equation*}
+            \Delta_{\Q(\sqrt {m})/\Q} = \begin{cases}
+                4m, &\text{ if }m \equiv 2,3 \pmod 4\\
+                m, &\text{ if }m \equiv 1 \pmod 4.
+            \end{cases}
+        \end{equation*}
+        If $m \equiv 1$ mod $4$, this has been basically solved by sheet 6, exercise 2.3:
+        There we found that for all $x \in \cO_{\Q(\sqrt m)}$ we have
+        $$\NormKQ(x) \geq \abs{\frac{m-1}4} > \abs {\frac m4}=
+        \abs{\frac{\Delta_{K/\Q}}4}.$$ 
+        The case $m \equiv 2,3$ mod $4$ is handled similarly. We have $\cO_K =
+        \Z[\sqrt m]$, and $\NormKQ(a + b\sqrt m) = a^2 + mb^2 \geq m = \abs{\Delta_K}/4$.
+
+\end{enumerate}
 
 \exercise{3}
 \begin{enumerate}
     \item Show that $\Cl(\Q(\sqrt{-2023})) = \{1\}$.
     \item Show that $\Cl(\Q(\sqrt{-67})) = \{1\}$.
 \end{enumerate}
+\textbf{Solution.}
+The Idea for both calculations is to follow the proof of lemma 4.4 in the lecture
+notes. Let $K = \Q(\sqrt m)$ with some squarefree integer $m<0$ identified as a
+subfield of $\C$, and let $I \subset \cO_K$ be any ideal. We can follow the
+proof of lemma 4.4 verbatim until just before equation (4.1) to obtain a
+\emph{reduced $\Z$-basis} of $(a_1, a_2)$ of $I$. That is, we find elements
+$a_1, a_2 \in \cO_K$ with $I = a_1 \Z + a_2 \Z$, such that 
+\begin{equation*}
+    \abs{\frac {a_2}{a_1}} \geq 1, \quad \Re\left(\frac{a_2}{a_1} \right) \leq 1/2
+    \quad \text{ and } \quad \Im\left(\frac{a_2}{a_1} \right) \geq 0.
+\end{equation*}
+just as in the notes we set $\tau = \frac {a_2}{a_1}$ and find that these conditions
+relate to $\abs \tau \geq 1$, $\abs{\Re \tau} \leq 1/2$ and 
+$\Im(\tau) \geq 0$. In particular, we find $\Im \tau \geq \sqrt 3 /2$. 
+Lemma 1.44 reads $\Delta_K(I) = \Norm(I)^2\Delta_K = 4bm$, where $b=1$ if 
+$m \equiv 2,3$ mod $4$ and $b=4$ otherwise. 
+Equation (4.1) also goes through, we find $\Delta_K(I) = -4 \abs{a_1}^4 \Im(\tau)^2$.
+Combining these equations, we arrive at 
+\begin{equation*}
+    2\Norm(I) \sqrt{\frac{-bm}3} \geq \abs{a_1}^2 = \NormKQ(a_1).
+\end{equation*}
+As $a_1 \in I$ we find $I \mid a_1 \cO_K$, so there is some ideal $J$ with
+$IJ = a_1 \cO_K$ (i.e., $[J]$ is the inverse of $[I]$ in $\Cl(K)$). Now
+\begin{equation*}
+    \Norm(I) \Norm(J) = \Norm(IJ) = \Norm(a_1 \cO_K) = \NormKQ(a_1) = \abs{a_1}^2 
+    \leq \Norm(I) \sqrt{\frac{-bm}3},
+\end{equation*}
+implying that 
+\begin{equation*}
+    \Norm(J) \leq \sqrt{\frac{-bm}3}.
+\end{equation*}
+The hope is now that this is not too large and leaves us with a number of cases 
+that we can handle. So let's see.
 
-\exercise{4}
+\begin{enumerate}[labelindent=0pt, wide]
+    \item Note that $2023 = 17^2 \cdot 7$, so that really $K = \Q(\sqrt{-7})$. 
+        As $-7$ is $1$ mod $4$, we have $b=1$, and we find 
+        $\Norm(J) \leq \sqrt {\frac 73} < 2$. There are no prime ideals with
+        norm that low (they cannot lie over a integer prime) so the only possibility
+        is $J = \cO_K$. But now $[I] = [J] = \id_{\Cl(K)}$, and 
+        $\Cl(K) = \{1\}$.
+    \item Again, $-67$ is $1$ mod $4$, but it is already squarefree and
+        relatively large, so we'll have to make use of Dedekind kummer. But first of all,
+        note that again $b =1$, so we find
+        \begin{equation*}
+            \Norm(J) \leq \sqrt{\frac{67}3} < \sqrt{23} < 5.
+        \end{equation*}
+        Now let's inspect the primes above $2$ and $3$. 
+        The ring $\cO_K$ is generated as $\Z$-module by 
+        $\frac{1+\sqrt{-67}}2$, which has minimal polynomial $T^2 + T + 17$ (I think).
+        Mod $2$ we have 
+        $T^2 + T + 17 \equiv T^2+ T + 1 $, which is irreducible and mod $3$ we have 
+        $T^2 + T + 17 \equiv T^2 + T + 2$, which is irreducible. So we find by
+        Dedekind-Kummer that both $2$ and $3$ are inert in $\cO_K$, hence the only
+        ideal with norm $\leq 4$ is $J = 2\cO_K$, which is principal. In particular, 
+        we find that $I$ has to be principal, hence $\Cl(K) = \{1\}$.
+\end{enumerate}
+
 
 \contactend
 \end{document}
