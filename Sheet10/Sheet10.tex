@@ -1,0 +1,67 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+\newcommand{\fl}{\mathfrac l}
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 10}
+\end{center}
+
+\exercise{1}
+Let $p\geq 2$ be a prime number and let $K = \Q(\zeta)$ be the $p$-th
+cyclotomic field, where $\zeta = \ec^{2 \pi \ic /p} \in \C$. The minimal
+polynomial of $\zeta$ over $\Q$ is $\Phi_n(X) = X^{p-1} + \dots + X + 1$.
+Let $l_1, \dots, l_n$ be prime numbers such that $l_i \equiv 1$ mod $p$
+for all $i$ and set $L = l_1 \cdots l_n$.
+\begin{enumerate}
+    \item Show that there xists $x \in \Z$ with $\Phi(xLp)>1$. 
+    \item Denote by $l$ a prime number that divides $\Phi_p(xLp)$. 
+        Show that $l \not \in \{l_1, \dots, l_n\}$ and $l \neq p$. 
+    \item Let $\fl$ be a prime ideal of $\cO_K$ containing $l$. Show that 
+        $f(\fl|l\Z) = 1$ and deduce that $l \equiv 1$ mod $p$.
+    \item Deduce that there exists infinitely many prime numbers $l$
+        such that $l \equiv 1$ mod $p$.
+\end{enumerate}
+\textbf{Solution.}
+\begin{enumerate}[labelindent=0pt, wide]
+    \item This is simple analysis. The term $X^{p-1}$ dominates and gets arbitrarily 
+        large.
+    \item One quickly finds $\Phi_p(xLp) \equiv 1$ mod $l_i$ and mod $p$.
+    \item Again, this is an application of Dedekind-Kummer. Again, we can apply 
+        Dedekind-Kummer with respect to $\zeta$, as $\cO_K = \Z[\zeta]$, i.e.,
+        $[\cO_K:\Z[\zeta]] = 1$. Now $\fl$ corresponds to some factor of the 
+        decomposition of $\Phi_n(X)$ mod $l$. As $\Phi_n(xLp) \equiv 0$ mod $l$ (i.e.,
+        thre is a root), there is at least one linear term in the decomposition
+        of $\Phi_n(X)$. Let this term correspond to some prime ideal $\fl' \mid
+        l\cO_K$, which now has residue degree $f(\fl'|l) = 1$ (again, by 3.11). 
+        But $\Q(\zeta)/\Q$ is Galois, so the residue degrees of primes over $l$ are
+        all the same. Hence $f(\fl|l) = 1$. Proposition 40 now yields that $l \equiv 1$ 
+        mod $p$.
+    \item Given any finite list $l_1, \dots, l_n$ of primes leaving residue  
+        $1$ mod $p$, we can take their product $L$ and find some integer 
+        $x > 1$ such that $\Phi_n(xLp) > 1$ by part 1. Now any prime $l$ dividing
+        $\Phi_n(xLp)$ is not among the $l_i$ and $\neq p$ by part 2, and 
+        part 3 shows that $l \equiv 1$ mod $p$. So no finite list of primes $1$ mod $p$
+        can contain all such primes.
+
+
+\end{enumerate}
+
+\exercise{2}
+Let $m<0$ be a squarefree integer and set $K =\Q(\sqrt m)$.
+\begin{enumerate}
+    \item Show that $\NormKQ(x) > \abs{\Delta_{K/\Q}}/4$ for all $x \in \cO_K\setminus \Z$. 
+\end{enumerate}
+\textbf{Solution.}
+
+\exercise{3}
+\begin{enumerate}
+    \item Show that $\Cl(\Q(\sqrt{-2023})) = \{1\}$.
+    \item Show that $\Cl(\Q(\sqrt{-67})) = \{1\}$.
+\end{enumerate}
+
+\exercise{4}
+
+\contactend
+\end{document}

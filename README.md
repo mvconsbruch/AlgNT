@@ -4,6 +4,10 @@
 ## Anouncements
 Exercise sessions start at 8:30!
 
+**If you submitted Sheets via email and didn't get a response, please write me.
+Seemingly my email client was misconfigured, resulting in *some* mails not
+being delivered.**
+
 
 ## Solutions to the exercise sheets
 Warning: These are my preperations for the exercise sessions. There might be errors, some solutions might even be completely wrong. If you think you found an error or have questions regarding these solutions, tell me about it :)
