@@ -4,7 +4,9 @@
 ## Anouncements
 Exercise sessions start at 8:30!
 
-**If you submitted Sheets via email and didn't get a response, please write me.
+**I am sick, the tutorial on tuesdays, the 19th of december is cancelled!**
+
+**If you submitted sheets via email and didn't get a response, please write me.
 Seemingly my email client was misconfigured, resulting in *some* mails not
 being delivered.**
 
