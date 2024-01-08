@@ -1,0 +1,163 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 11}
+\end{center}
+
+\exercise{1}
+Let $p$ be a prime number.
+\begin{enumerate}
+    \item Show that there exist $a,b \in \Z$ such that $a^2 + b^2 = -1 \pmod p$.
+    \item For $a,b \in \Z$ as in 1, set 
+        \begin{equation*}
+            \Lambda = \dots \subset \R^4.
+        \end{equation*}
+        Show that $\Lambda$ is a lattice in $R^4$ and that $\det \Lambda = p^2$. 
+    \item Show that $x_1^2 + x_2^2 + x_3^2 + x_4^2 \equiv 0$ mod $p$ for all 
+        $(x_1, \dots, x_4)^t \in \Lambda$. 
+    \item Use Minkowski's theorem to show that there exist $x_1, \dots, x_4 \in \Z$ 
+        such that \begin{equation*}
+            x_1^2 + x_2^2 + x_3^2 + x_4^2 = p.
+        \end{equation*}
+        I.e. every prime number is a sum of four squares. (Hint: The volume of 
+        the $4$-dimensional unit ball is $\pi^2 / 4$.)
+\end{enumerate}
+\textbf{Solution.}
+\begin{enumerate}[wide,labelindent=0pt]
+    \item If $-1 \in \Z/p\Z$ is a quadratic residue, we are done (choose
+        $a = \sqrt{-1}$ and $b=0$). Otherwise, we have to show that there 
+        exists a solution to $a^2 +1 \equiv b^2$ mod $p$. This is just a matter
+        of counting. Let $S = \{a^2 | a \in (\Z/p\Z)\}$ be the set of squares
+        mod $p$. Note that $\# S = \frac{p+1}2$. Now the sets $S$ and $1+S$ must meet,
+        as otherwise $p = \# (\Z/p\Z) \geq \# S + \#(1+S) = p+1$.
+    \item It is a lattice because the determinant of the basis vectors is invertible,
+        and this determinant is readily seen to be $p^2$. 
+    \item If $(x_1, \dots, x_4)^t \in \Lambda$, we can write
+        \begin{equation*}
+            \begin{aligned}
+                x_1 &= pz_1 + 0 z_2 + a z_3 + b z_4\\
+                x_2 &= 0z_1 + p z_2 + b z_3 + (-a) z_4\\
+                x_3 &= 0z_1 + 0 z_2 + 1 z_3 + 0 z_4\\
+                x_4 &= 0z_1 + 0 z_2 + 0 z_3 + 1 z_4.
+            \end{aligned}
+        \end{equation*}
+        For their squares mod $p$ we obtain
+        \begin{equation*}
+            \begin{aligned}
+                x_1^2 &= (a z_3 + b z_4)^2 = (az_3)^2 + 2abz_3 z_4 + (bz_4)^2\\
+                x_2^2 &= (b z_3 + (-a) z_4)^2 = (bz_3)^2 - 2abz_3z_4 + (az_4)^2\\
+                x_3^2 &= z_3^2\\
+                x_4^2 &= z_4^2.
+            \end{aligned}
+        \end{equation*}
+        Hence we obtain (again mod $p$)
+        \begin{equation*}
+            x_1^2 + x_2^2 + x_3^2 + x_4^2 = (z_3+z_4)(a^2 + b^2 + 1) = 0.
+        \end{equation*}
+
+    \item Write $\norm-$ fot the $2$-norm on $\R^4$. Part 3 has shown that 
+        for every $x \in \Lambda$, $\norm x^2 \in p \Z$. Look at the ball
+        \begin{equation*}
+            B = \{x \in \R^4 \mid \norm x^2 < 2p\}.
+        \end{equation*}
+        Using the hint one quickly verifies that $\vol(B) = \frac{\pi^2}2 (2p)^2$.
+        In our situation, Minkowski's bound states that every convex, point
+        symmetric convex set around the origin with volume $> 2^4 \det(\Lambda)$
+        has non-trivial intersection with $\Lambda$. As $B$ satisfies all these
+        assumptions (note that $\vol(B) > 18p^2 > 2^4p^2$), we find some point
+        $x \in \Lambda$ with $0 < \norm x^2 < 2p$. As $p \mid \norm x^2$, this 
+        implies $\norm x^2 = p$, and we are done.
+\end{enumerate}
+
+\exercise{2}
+[Continuation of sheet 10, exercise 2] Let $m < 0$ be squarefree and set $K = \Q(\sqrt m)$. 
+\begin{enumerate}
+    \item[2.] Suppose that $\abs{\Delta_K}$ is not a prime number and $\Delta_K 
+        \not \in \{-4, -8\}$. Show that $\Cl(K)$ is not trivial.
+\end{enumerate}
+\textbf{Solution.}
+The hint (I didn't copy the hint) suggested to look at the smallest prime divisor of
+$\Delta_K$. So let's do that, and denote it by $p$. We know that $p$ ramifies in 
+$K$, i.e., we have $p\cO_K = \fp^2$ for some prime ideal $\fp$ in $\cO_K$. Now
+assume for sake of contradiction that $\Cl(K)$ is trivial. Then $\fp$ is principal, i.e.,
+$\fp=(a)$ for some $a \in \cO_K$. Now $a^2 = p$ (up to a unit), and we find
+that $a \not \in \Z$. Hence part 1 of the exercise (on sheet 10) implies that
+$$p = \Norm_{K/\Q}(a) \geq \frac{\Delta_K}4 \geq \frac{p^2}4.$$
+This is only possible if $p \in \{2,3\}$. In the case $p=2$ we find
+$\abs{\Delta_K} \leq 8$, in the case $p=3$ we find $\abs{\Delta_K} \leq 12$.
+Now let us look at discriminants in this range.
+The discriminant values are 
+\begin{equation*}
+    \{-4,-8,-3,-7,-11\}.
+\end{equation*}
+The cases $\Delta_K= \{-4, -8\}$ are excluded, the other cases are excluded because
+they arise from $\Q(\sqrt m)$ when $m$ is (a negative) prime. So there are simply no
+possibilities left.
+
+\exercise{3}
+Compute $\Cl(\Q(10))$.
+\textbf{Solution.}
+We use Minkowski's bound. It states that every ideal class $C \in \Cl(K)$
+contains a prime ideal with norm $\leq M_K$, where
+\begin{equation*}
+    M_K = \sqrt{\abs \Delta_K} \left(\frac{4}\pi \right)^{r_2} \frac{n^n}{n!},
+\end{equation*}
+where $n = [K : \Q]$ and $r_2$ is the number of complex embeddings (up to conjugation).
+In our situation, one quickly verifies $M_{\Q(\sqrt {10})} = \sqrt{10} = 3.1\dots$.
+So we only have to understand the primes up until norm $3$. All of these prime ideals
+have to lie above $(2)$ or $(3)$, so we can use Dedekind-Kummer to find them.
+Note that the minimal polynomial of $\sqrt {10}$ over $\Q$ is $f(T) = T^2 - 10$.
+This reduces mod $2$ to $T^2$ and mod $3$ to $(T+1)(T-1)$. Hence the decompositions
+are given by 
+\begin{equation*}
+    2 = \fp_2^2, \quad 3 = \fp_3 \fp_3'
+\end{equation*}
+for prime ideals $\fp_2, \fp_3, \fp_3' \subset \cO_K$. Note that 
+$\Norm(\fp_2) = 2$, $\Norm(\fp_3) = \Norm(\fp_3') = 3$. 
+With Dedekind-Kummer we can also explicitely describe all of those prime ideals,
+and find that (perhaps after interchanging $\fp_3$ and $\fp_3'$)
+\begin{equation*}
+    (1 + \sqrt {10}) = \fp_3^2, \quad (2 + \sqrt{10}) = \fp_2 \fp_3.
+\end{equation*}
+But now, in $\Cl(K)$ we have the equalities
+\begin{equation*}
+    1 = [\fp_2]^2 = [\fp_3][\fp_3'] = [\fp_3]^2,
+\end{equation*}
+and in particular we find $\#\Cl(K) \leq 2$. But one quickly finds that $\fp_2$ is 
+not principal: The equation $2 = \alpha^2$ is not solvable in $\cO_K$, as
+$\NormKQ(\alpha) = \pm 2$ is impossible. Indeed, $\NormKQ(x + y\sqrt{10}) = 
+x^2 - 10y^2 \not \equiv \pm 2$ mod $5$  for $x,y \in \Z$ (the only quadratic 
+residues mod $5$ are $\pm 1$). So $\# \Cl(K) >1$, this implies $\Cl(K) = \Z/2\Z$, and
+we are done.
+
+\exercise{4}
+We denote by $\sqrt 2$ the positive square root of $2$ in $\R$.
+\begin{enumerate}
+    \item Supose that $u \in \Z[\sqrt 2]^\times$ and $1 < u < 1 + \sqrt 2$. Show that
+        $u = 1$. 
+    \item Deduce that $\Z[\sqrt 2]^\times = \{\pm(1+\sqrt 2)^k \mid k \in \Z\}$.
+\end{enumerate}
+\textbf{Solution.}
+\begin{enumerate}[wide, labelindent=0pt] 
+    \item Suppose for sake of contradiction that $(a + b \sqrt 2)(a - b \sqrt
+        2) = 1$, with $1 < a + b\sqrt 2 < 1 + \sqrt 2$. Then we find (using the
+        triangle inequality) 
+        \begin{equation*}
+            2 \abs a \leq \underbrace{\abs{a + b \sqrt 2}}_{\leq 1 + \sqrt 2} +
+            \underbrace{\abs{a - b \sqrt 2}}_{\leq 1}
+            \leq 2 + \sqrt 2,
+        \end{equation*}
+        hence $\abs a \leq 1 + \frac 1{\sqrt 2}$. One readily verifies that this 
+        results in a contradiction.
+    \item By multiplying with $(1+\sqrt 2)$ suitably often, any positive unit can be
+        reduced to a unit with absolute value in the range $[1, 1 + \sqrt 2)$.
+        But the only unit in this range is $1$, hence any positive unit is of the 
+        form $(1 + \sqrt 2)^k$ for $k \in \Z$. The same can be done for negative
+        units, and we find $\cO_K^\times = \{\pm (1 + \sqrt 2)^k \mid k \in \Z\}$.
+\end{enumerate}
+
+\contactend
+\end{document}
