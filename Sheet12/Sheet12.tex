@@ -1,0 +1,90 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 12}
+\end{center}
+
+\exercise{1}
+Let $I$ be an ideal of a number field $K$. Show that htere is a finite field extension $L$ of $K$ such that 
+$I \cO_L$ is a principal ideal of $\cO_L$.
+
+\textbf{Solution.}
+By finiteness of $\Cl(K)$ there is some integer $m$ such that $[I]^m = [I^m] = [(1)] \in \Cl(K)$,
+i.e., $I^m = (\alpha)$ is a principal ideal. We put $L = K(\alpha^{1/m})$. Now 
+$\alpha^{1/m} \in \cO_L$, and we have 
+$$(I \cO_L)^m = I^m \cO_L = \alpha \cO_L = (\alpha^{1/m})^m \cO_L.$$
+After decomposing $I\cO_L$ and $\alpha^{1/m}\cO_L$ into prime factors, we see that 
+this equation implies $I\cO_L = \alpha^{1/m} \cO_L$. 
+
+\exercise{2} 
+Let $K = \Q(\sqrt 2, \sqrt 3)$ and set 
+\begin{equation*}
+    \Gamma = \{(1+ \sqrt 2)^i(2 + \sqrt 3)^j(\sqrt 2 + \sqrt 3)^k \mid i,j,k \in \Z\}.
+\end{equation*}
+Show that $\Gamma$ is a subgroup of $\cO_K^\times$ and that $[\cO_K^\times: \Gamma] < \infty$.
+
+\textbf{Solution.}
+Write $u,v,w$ for the respective factors, so that $\Gamma = u^\Z v^\Z w^\Z$. 
+Note that $\NormKQ(u) = \NormKQ(v) = 1$ and $\NormKQ(w) = -1$, so that indeed,
+$u,v,w$ are units and $\Gamma$ is a subgroup of $\cO_K^\times$. One quickly verifies that
+$K$ is totally real. Indeed, it is Galois and there is a embedding $K \inj \R$ (now all
+other embeddings are obtained by shifting with elements in the Galois group). 
+Hence, by Dirichlet's unit theorem, 
+$$\cO_K^\times \cong \mu(K) \times \Z^{r+s-1} = \pm 1 \times \Z^3.$$
+On the other hand, $\Gamma$ is free of rank $3$. Indeed, $u \in \Q(\sqrt 2)^\times$,
+$v \in \Q(\sqrt 3)^\times$ and $w \in \Q(\sqrt 2, \sqrt
+3)^\times\setminus(\Q(\sqrt 2)^\times \cup \Q(\sqrt 3)^\times)$. 
+Let $\cO_{K, >0}^\times \cong \Z^3$ be the (free) group of positive units $K \inj \R$. 
+Now $\Gamma$ is a free subgroup of full rank this group, and in particular, 
+its has finite index. Inclusion $\cO_{K, >0}^\times \inj \cO_K^\times$ also has
+finite index, hence $\Gamma \inj \cO_K^\times$ has finite index. 
+
+\exercise{3}
+Let $K$ be a totally real number field, i.e., one that has \textbf{only} real embeddings.
+Let 
+\begin{equation*}
+    T \subset \Hom(K, \R) = \{\tau: K \to \R \mid \tau \text { is a field homomorphism}\}
+\end{equation*}
+be a proper non-mepty subset. Show that there exists $u \in \cO_K^\times$ such that 
+$0 < \tau(u) < 1$ for $\tau \in T$ and $\tau(u) > 1$ for $\tau \in \Hom(K, \R)
+\setminus T$.
+
+\textbf{Solution.} 
+Let $\sigma_1, \dots, \sigma_r: K \to \R$
+be the real embeddings of $K$ (in our case $r = n = [K : \Q]$). 
+From the proof of Dirichlet's unit theorem, we know that the map
+\begin{equation*}
+    \cL: \cO_K^\times \to \R^{r}, \quad u \mapsto (\log \abs{\sigma_1(u)}, \dots, \log \abs{\sigma_r(u)})
+\end{equation*}
+is a group homomorphism from $\cO_K$ to $\R^{r-1}$. It's image lies in the sub vector
+space $V$ given by 
+\begin{equation*}
+    V = \left\{(x_1, \dots, x_r)^t \in \R^r \mid \sum_{i = 1}^r x_i = 0\right\},
+\end{equation*}
+and its kernel is given by $\mu(K)$, the group of roots of unity in $K$ (in our case this
+is $\cong \{\pm 1\}$). Also, the image $\cL(\cO_K^\times)$ has full rank in 
+$V$, i.e., $\cL(\cO_K^\times) \otimes_\Z \R \cong V$ (it is a lattice in $V$). 
+
+Without loss of generality we can assume that 
+$T = \{\sigma_1, \dots, \sigma_q\}$ for some $1 \leq q < r$. Let $Q \subset
+\R^r$ be the quadrant given by
+\begin{equation*}
+    Q = \{(x_1, \dots, x_r)^t \in \R^r \mid x_i < 0 \text{ for }i = 1, \dots, q
+    \text{ and }x_i > 0 \text{ for } i = q+1, \dots, r \}.
+\end{equation*}
+The intersection $Q \cap V$ is non-empty by construction, and one readily verifies that
+there is a point $x \in Q \cap \cL(\cO_K^\times)$. Now choose some preimage
+$u \in \cO_K^\times$ of $x$. As $u$ satisfies $\abs{\sigma_i(u)} < 1$ for 
+$1 \leq i \leq q$ and $\abs{\sigma_i(u)} > 1$ for $q < i \leq r$,
+the element $u^2$ satisfies all constraints.
+
+\exercise{4}
+Let $K$ be a number field, let $I$ be a non-zero ideal of $\cO_K$ and let $C \in \Cl(K)$. Use
+theorem 5.3 to show that there exists a non-zero ideal $J$ of $\cO_K$ such that $I + J = \cO_K$ and
+$C = [J]$. 
+
+\contactend
+\end{document}
