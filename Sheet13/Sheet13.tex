@@ -90,49 +90,22 @@ theorem 5.3 to show that there exists a non-zero ideal $J$ of $\cO_K$ such that 
 $C = [J]$. 
 
 \textbf{Solution.}
-Theorem 5.3 counts the number of objects in an ideal class up to some given norm $t$.
-For $C \in \Cl(K)$, let $i(K, C, t)$ be the set of ideal in the given ideal class $C$
-with norm $\leq t$ (just as in the statement). Then theorem 5.3 reads
-\begin{equation*}
-    i(K, C, t) = \kappa t + O(t^{1 - 1/d}) = \kappa t + o(t).
-\end{equation*}
-Here we used \emph{big-$O$-notation}, the equation above means essentially is
-that $i(K,C,t)$ is of size $\kappa t$ up to an error that is bounded by some multiple
-of $t^{1-1/d}$.
-Let's solve the exercise. We will show that the set of ideals
-\begin{equation*}
-    \{J \subset \cO_K \mid J \in C \& J + I = \cO_K \& \Norm(J) \leq t\}
-\end{equation*}
-is non-epty for $t$ sufficiently large. Note that two ideals are coprime if and
-only if they don't share a prime factor. 
-
-If we assume that $I = \fp$ is prime, we use that 
-\begin{multline*}
-    \#\{J \mid \Norm(J) \leq t \wedge J + I = \cO_K \wedge [J] = C\}\\
-    = \#\{J \mid \Norm(J) \leq t \wedge [J] = C\} 
-    - \#\{J \mid \Norm(J) \leq t \wedge \fp \mid J \wedge [J] = C\} \\
-    = \#\{J \mid \Norm J \leq t \wedge [J] = C\} 
-    - \#\{J \mid \Norm(J) \leq t/\Norm(\fp) \wedge [J] = C[p^{-1}]\} \\
-    = i(K, C; t) - i(K, [p^{-1}]C; t/\Norm(\fp)) 
-    \kappa t - \kappa \frac t {\Norm(\fp)} + O(t^{1-1/d}) \\
-    = \kappa \left( 1- \frac 1 {\Norm(\fp)}\right) t + O(t^{1-1/d}).
-\end{multline*}
-
-If $I = \fp_1^{e_1} \cdots \fp_r^{e_r}$, we use the same idea and
-inclusion-exclusion to find that 
-\begin{multline*}
-    \#\{J \mid \Norm(J) \leq t \wedge J + I = \cO_K \wedge [J] = C\}\\
-    =\sum_{k=0}^n \sum_{S \subset \{1, \dots, n\}, \abs S = k}
-    (-1)^{k} \# \left \{J \mid \Norm(J) \leq \frac{t}{\prod_{s \in S} \Norm(\fp_s)}
-    \wedge [J] = \left[\prod_{s \in S} \fp_s^{-1}\right] C \right\}
-    \\ =  \sum_{k=0}^n (-1)^k \sum_{S \subset \{1, \dots, n\},\ \abs S = k}
-    (-1)^k \kappa t \prod_{s \in S} \Norm(\fp_s)^{-1} + O(t^{1-1/d})
-    \\= \kappa t \prod_{\fp \mid I} \left( 1- \frac 1{\Norm(\fp)} \right) + O(t^{1-1/d}).
-\end{multline*}
-
-If $t$ is sufficiently large, this is positive. This result has a nice interpretation,
-the factor $\prod(1 - \frac 1 {\Norm(\fp)})$ is (in some sense) the probability
-of a random ideal to be coprime to $I$. So the result is what we would expect.
+%Theorem 5.3 counts the number of objects in an ideal class up to some given norm $t$.
+%For $C \in \Cl(K)$, let $i(K, C, t)$ be the set of ideal in the given ideal class $C$
+%with norm $\leq t$ (just as in the statement). Then theorem 5.3 reads
+%\begin{equation*}
+%    i(K, C, t) = \kappa t + O(t^{1 - 1/d}) = \kappa t + o(t).
+%\end{equation*}
+%Here we used \emph{big-$O$-notation}, what this means essentially is that $i(K,C,t)$ is
+%of size $\kappa t$ up to some small error. 
+%Let's solve the exercise. We will show that the set of ideals
+%\begin{equation*}
+%    \{J \subset \cO_K \mid J \in C \& J + I = \cO_K \& \Norm(J) \leq t\}
+%\end{equation*}
+%is non-epty for $t$ sufficiently large. Note that two ideals are coprime if and
+%only if they don't share a prime factor. 
+%If we assume that $J = \fp$ is prime, this is immediate. We have
+\red{will add this later!}
 
 \contactend
 \end{document}
