@@ -31,7 +31,7 @@ Let $K$ be a number field of degree $d$.
         \end{equation*}
         We have seen in the lecture that the image of $\cO_K^\times$ under this map 
         is a lattice in a linear subspace $V$. Here $V$ is given by those vectors
-        of $\R^{r+s}$ whose coordinates sum up to $0$. We are of course interested
+        of $\R^{r+s}$ whose coordinates sum up to $0$. We are interested
         in the image of the set $\alpha \cO_K^\times$ under $\cL$. This is contained
         in the affine-linear subspace $\cL(\alpha) + V$. 
         
@@ -52,7 +52,7 @@ Let $K$ be a number field of degree $d$.
             \norm{\cL(\alpha)}_1 = \log \Norm(I),
         \end{equation*}
         hence we obtain 
-        $$\norm w_\infty \leq \norm{\cL(\alpha)}_\infty \leq \frac 1d \log \Norm(I).$$
+        $$\norm w_\infty = \frac 1d \norm w_1 \leq \frac 1d \log \Norm(I).$$
         All we need to do is to find a point of $\cL(\alpha \cO_K^\times)$
         close to $w$. For $\nu \in V$ define $d(\nu) = \inf_{\gamma \in \cL(\cO_K^\times)}
         (\norm{\nu-\gamma}_\infty)$, and set $C = \sup_{\nu \in V} d(\nu)$. This 
@@ -102,33 +102,53 @@ Show that
 \end{equation*}
 
 \textbf{Solution.} 
-\red{Will add later}
-%Recall that from the lecture (Example 3.12, say) we have for quadratic fields
-%$K = \Q(\sqrt m)$ with discriminand $\Delta_K$
-%\begin{equation*}
-%    p\cO_K = 
-%    \begin{cases}
-%        \textit{prime ideal}, &\text{ if } \legendre{\Delta_K}{p} = -1 \\
-%        \fp_1 \fp_2, &\text{ (totally split) if } \legendre{\Delta_K}{p} = 1 \\
-%        \fp^2, &\text{ (totally ramified) if } \legendre{\Delta_K}{p} = 0.
-%    \end{cases}
-%\end{equation*}
-%
-%Also, note that for $K$ as above we have
-%\begin{multline*}
-%    \zeta_K(s) = \prod_{\fp} \left( 1 - \frac{1}{\Norm(\fp^s)} \right)^{-1} \\
-%    = \prod_{\legendre{\Delta_K}{p} = -1}\left( 1 - \frac{1}{\Norm(\fp)^{2s}}\right)^{-1}
-%        \prod_{\legendre{\Delta_K}{p} = 1}\left( 1 - \frac{1}{\Norm(\fp)^{s}}\right)^{-2}
-%        \prod_{\legendre{\Delta_K}{p} = 0}\left( 1 - \frac{1}{\Norm(\fp)^{s}}\right)
-%\end{multline*}
-%
-%In our case, we have $K_1 = \Q(\sqrt 6)$ and $K_2 = \Q(\sqrt 7)$, and going through the
-%different cases we find 
-%\begin{equation*}
-%    \zeta_\Q \zeta_{K_1} \zeta_{K_2}(s) = 
-%    \zeta^2(s) \left(\frac 1{1-3^{-s}} \right)^2 
-%\end{equation*}
-%
+Here we will only sketch a solution. The details are tedious.
+Recall that from the lecture (Example 3.12, say) we have for quadratic fields
+$K = \Q(\sqrt m)$ with discriminand $\Delta_K$
+\begin{equation*}
+    p\cO_K = 
+    \begin{cases}
+        \textit{prime ideal}, &\text{ if } \legendre{\Delta_K}{p} = -1 \\
+        \fp_1 \fp_2, &\text{ (totally split) if } \legendre{\Delta_K}{p} = 1 \\
+        \fp^2, &\text{ (totally ramified) if } \legendre{\Delta_K}{p} = 0.
+    \end{cases}
+\end{equation*}
+
+Also, note that for $K$ as above we have
+\begin{multline*}
+    \zeta_K(s) = \prod_{\fp} \left( 1 - \frac{1}{\Norm(\fp^s)} \right)^{-1}  = 
+    \prod_{p \in \Z \text{ prime}} \prod_{\fp \mid p \cO_K} \left(1-
+    \frac1{\Norm(\fp)^s}\right)^{-1} \\
+    = \prod_{\legendre{\Delta_K}{p} = -1}\left( 1 - \frac{1}{\Norm(\fp)^{2s}}\right)^{-1}
+        \prod_{\legendre{\Delta_K}{p} = 1}\left( 1 - \frac{1}{\Norm(\fp)^{s}}\right)^{-2}
+        \prod_{\legendre{\Delta_K}{p} = 0}\left( 1 - \frac{1}{\Norm(\fp)^{s}}\right)
+\end{multline*}
+This yields some expansion of $\zeta_{\Q(\sqrt 6} \zeta_{\Q(\sqrt 7}
+\zeta_{\Q(\sqrt {42})}$ in terms of factors indexed by prime numbers.
+
+Write $L = \Q(\sqrt 6, \sqrt 7)$. We want to do something similar as above for the
+function $\zeta_{\Q(\sqrt 6, \sqrt 7)}$. Recall that if $p \cO_K = \fp_1^{e_1} \cdots
+\fp_g^{e_g}$ we have $e_1 = \dots = e_g = e$, $f(\fp_1) = \dots = f(\fp_g) = f$ and
+$efg = 4$. Also, as $\Gal(L/\Q) \cong (\Z/2\Z)^2$ is not cyclic, we cannot have 
+inert primes, i.e., we never have $f=4$. Indeed, if there was an inert prime $\fp \mid p$,
+we'd find $\Gal(L/\Q) = D(\fp|p) \cong \Gal(\kappa(\fp)/\FF_p)$, and the latter 
+(being the Galois group of an extension of finite fields) is cyclic. 
+Hence, the only possible splitting behaviours of a prime $p \in \Z$ are:
+\begin{equation*}
+    \begin{aligned}
+        g = 4 &\implies \prod_{\fp \mid p}\left(1 - \frac1{\Norm(\fp)^s}\right)^{-1} = (1 - p^{-s})^{-4} \\
+        f = 2, g = 2 &\implies \prod_{\fp \mid p}\left(1 - \frac1{\Norm(\fp)^s}\right)^{-1} = (1 - p^{-2s})^{-2} \\
+        e = 2, f = 2, g = 1 &\implies \prod_{\fp \mid p}\left(1 - \frac1{\Norm(\fp)^s}\right)^{-1} = (1 - p^{-2s})^{-1} \\
+        e = 2, f = 1, g = 2 &\implies \prod_{\fp \mid p}\left(1 - \frac1{\Norm(\fp)^s}\right)^{-1} = (1 - p^{-s})^{-2} \\
+        e = 4, f = 1, g = 1 &\implies \prod_{\fp \mid p}\left(1 - \frac1{\Norm(\fp)^s}\right)^{-1} = (1 - p^{-s})^{-1}.
+    \end{aligned}
+\end{equation*}
+But one easily checks that $\Delta_L$ has only prime divisors $2,3,7$, so that all other
+primes are unramified on $\cO_L$. Using this and that
+\begin{equation*}
+    \legendre{42}p= \legendre6p \legendre 7p,
+\end{equation*}
+we can show that the Euler factors at each prime $p$ coincide for both functions.
 
 \exercise{3}
 Let $K$ be a number field and let 
@@ -140,7 +160,8 @@ runs over the non-zero primes of $\cO_K$ in the following.
 \begin{enumerate}
     \item Show that 
         \begin{equation*}
-            \lim_{s \rightarrow 1^+} \frac{1}{\log(s-1)} \sum_\fp \log (1 - \Norm(\fp)^{-s}) = 1.
+            \lim_{s \rightarrow 1^+} \frac{1}{\log(s-1)} \sum_\fp \log (1 -
+            \Norm(\fp)^{-s}) = 1.
         \end{equation*}
     \item Show that 
         \begin{equation*}
