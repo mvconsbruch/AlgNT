@@ -27,7 +27,7 @@ Let $K$ be a number field of degree $d$.
         \begin{equation*}
             \cL: \cO_K\setminus \{0\} \to \R^{r+s}, 
             \xi \mapsto (\log \abs{\sigma_1(\xi)}, \dots, \log \abs {\sigma_r(\xi)}, 
-            2\log \abs{\sigma_{r+1}(\xi)}, \dots, \log \abs{\sigma_{r+s}(\xi)}).
+            2\log \abs{\sigma_{r+1}(\xi)}, \dots, 2 \log \abs{\sigma_{r+s}(\xi)}).
         \end{equation*}
         We have seen in the lecture that the image of $\cO_K^\times$ under this map 
         is a lattice in a linear subspace $V$. Here $V$ is given by those vectors
@@ -41,27 +41,34 @@ Let $K$ be a number field of degree $d$.
         \begin{equation*}
              \max x_i \leq \frac 1d \log \Norm(I) + \log(C)
         \end{equation*}
+        We define a norm $\norm -$ via 
+        \begin{equation*}
+            \norm{(x_1, \dots, x_n)^t } = \max (\abs{x_1}, \dots, \abs{x_s},
+            \tfrac 12 \abs{x_{s+1}}, \dots, \tfrac 12 \abs{x_{s+r}}).
+        \end{equation*}
 
         We write $W$ for the vector space spanned by 
         \begin{equation*}
-            w_0 = \frac 1d (1,\dots,1).
+            w_0 =  (1,\dots,1,2, \dots, 2)
         \end{equation*}
-        This is orthogonal to the subspace $V$. Write $\cL(\alpha) = w + v$ where
+        with $r$ ones and $s$ twos.
+        Write $\cL(\alpha) = w + v$ where
         $v \in V$ and $w \in W$. We have 
         \begin{equation*}
             \norm{\cL(\alpha)}_1 = \log \Norm(I),
         \end{equation*}
-        hence we obtain 
-        $$\norm w_\infty = \frac 1d \norm w_1 \leq \frac 1d \log \Norm(I).$$
+        hence we obtain (as $w \in \R w_0$)
+        $$\max x_i \leq \norm w = \frac 1{d} \norm w_1 \leq \frac 1d
+        \norm{\cL(\alpha)}_1 = \frac 1d \log \Norm(I).$$
         All we need to do is to find a point of $\cL(\alpha \cO_K^\times)$
         close to $w$. For $\nu \in V$ define $d(\nu) = \inf_{\gamma \in \cL(\cO_K^\times)}
-        (\norm{\nu-\gamma}_\infty)$, and set $C = \sup_{\nu \in V} d(\nu)$. This 
+        (\norm{\nu-\gamma})$, and set $C = \sup_{\nu \in V} d(\nu)$. This 
         is well-defined because $\cL(\cO_K^\times)$ is a lattice in $V$.
         Now $C$ only depends on $K$, and we find a point 
         $$(x_1,\dots, x_r, 2x_{r+1},\dots, 2x_{r+s}) = x = w + \nu_0$$
         with $\nu_0 \in V$ and $\norm{\nu_0}_\infty \leq C$. In particular,
         \begin{equation*}
-        \max x_i \leq \norm x_\infty \leq \norm w_\infty + \norm {\nu_0}_\infty \leq
+        \max x_i \leq \norm x \leq \norm w + \norm {\nu_0} \leq
         \frac 1d \log \Norm(I) + C.
         \end{equation*}
         This solves the exercise.
