@@ -22,13 +22,16 @@ Let $K$ be a number field of degree $d$.
 \end{enumerate}
 \textbf{Solution.}
 \begin{enumerate}[wide, labelindent=0pt]
-    \item Assume that $I = (\alpha)$.
-        Then $I = (u \alpha)$ for every unit $u \in \cO_K^\times$. Look at the morphism
+    \item Assume that $I = (\alpha) \neq (0)$.
+        Then $I = (u \alpha)$ for every unit $u \in \cO_K^\times$. 
+        The map $\cL$ from the proof of Dirichlet's unit theorem extends to a map
         \begin{equation*}
             \cL: \cO_K\setminus \{0\} \to \R^{r+s}, 
             \xi \mapsto (\log \abs{\sigma_1(\xi)}, \dots, \log \abs {\sigma_r(\xi)}, 
-            2\log \abs{\sigma_{r+1}(\xi)}, \dots, 2 \log \abs{\sigma_{r+s}(\xi)}).
+            2\log \abs{\sigma_{r+1}(\xi)}, \dots, 2 \log \abs{\sigma_{r+s}(\xi)}),
         \end{equation*}
+        which is a morphism of monoids.
+
         We have seen in the lecture that the image of $\cO_K^\times$ under this map 
         is a lattice in a linear subspace $V$. Here $V$ is given by those vectors
         of $\R^{r+s}$ whose coordinates sum up to $0$. We are interested
@@ -36,10 +39,10 @@ Let $K$ be a number field of degree $d$.
         in the affine-linear subspace $\cL(\alpha) + V$. 
         
         The exercise now translates to: There is some constant $C > 0$ depending only
-        on $K$ such that there is a point $x = (x_1, \dots, x_r, 2x_{r+1}, \dots,
-        2x_{r+s}) \in \cL(\alpha) + \cL(\cO_K^\times) \subset \cL(\alpha)+V$ with 
+        on $K$ such that there is a point $\xi = (\xi_1, \dots, \xi_r, 2\xi_{r+1}, \dots,
+        2\xi_{r+s}) \in \cL(\alpha) + \cL(\cO_K^\times) \subset \cL(\alpha)+V$ with 
         \begin{equation*}
-             \max x_i \leq \frac 1d \log \Norm(I) + \log(C)
+             \max \xi_i \leq \frac 1d \log \Norm(I) + \log(C)
         \end{equation*}
         We define a norm $\norm -$ via 
         \begin{equation*}
@@ -51,14 +54,12 @@ Let $K$ be a number field of degree $d$.
         \begin{equation*}
             S((x_1,\dots, x_{r+s})^t) = \sum_{i=1}^{r+s} x_i.
         \end{equation*}
-
         Let $W$ be the vector space spanned by 
         \begin{equation*}
             w_0 =  (1,\dots,1,2, \dots, 2)
         \end{equation*}
-        with $r$ ones and $s$ twos.
-        Write $\cL(\alpha) = w + v$ where
-        $v \in V$ and $w \in W$. We have 
+        with $r$ ones and $s$ twos and 
+        write $\cL(\alpha) = w + v$ where $v \in V$ and $w \in W$. We have 
         \begin{equation*}
             S(\cL(\alpha)) = \log \Norm(I),
         \end{equation*}
