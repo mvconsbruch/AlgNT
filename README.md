@@ -26,5 +26,6 @@ and cubic extensions, a non-monogenic number field.
 * [Sheet 10](Sheet10/Sheet10.pdf) Fun proof of the infinitude of primes that are 1 mod 4, calculations with discriminants, direct calculation of class groups (without Minkowski's bound).
 * [Sheet 11](Sheet11/Sheet11.pdf) Every prime can be written as a sum of four squares, calculation of class numbers of certain quadratic fields, some explicit verification of Dirichlet's unit theorem.
 * [Sheet 12](Sheet12/Sheet12.pdf) Every ideal has trivial ideal class in some extension, some subgroup of the units, an exercise that wants you to understand the proof of Dirichlet's unit theorem and a first application of analytic tools.
+* [Sheet 13](Sheet13/Sheet13.pdf) Something something principal ideals, Dedekind-zeta functions, analysis.
 
 ###### Max von Consbruch, email: mvconsbruch(at)uni-bonn(dot)de

@@ -4,108 +4,201 @@
 \begin{document}
 
 \begin{center}
-    \huge{Solutions to Sheet 12}
+    \huge{Solutions to Sheet 13}
 \end{center}
 
 \exercise{1}
-Let $I$ be an ideal of a number field $K$. Show that htere is a finite field extension $L$ of $K$ such that 
-$I \cO_L$ is a principal ideal of $\cO_L$.
-
+Let $K$ be a number field of degree $d$.
+\begin{enumerate}
+    \item Show that there exists a constant $C$, depending only on $K$,
+        with the following property. If $I$ is a principal ideal of $\cO_K$,
+        then $I = \alpha \cO_K$ for some $\alpha \in \cO_K$ such that 
+        $\abs{\sigma(\alpha)} \leq C \Norm(I)^{1/d}$ for every real or 
+        complex embedding of $K$.
+    \item Let $K \subset \R$ be a quadratic number field. Let $\eta \in \cO_K^\times$
+        be such that $\cO_K^\times = \{\pm \eta^n ; n \in \Z\}$. Show that, in this
+        case, one can take $C = \max\{\abs \eta, \abs \eta^{-1}\}^{1/2}$.
+    \item Do there exists $x,y \in \Z$ with $x^2 - 82y^2 = 2$?
+\end{enumerate}
 \textbf{Solution.}
-By finiteness of $\Cl(K)$ there is some integer $m$ such that $[I]^m = [I^m] = [(1)] \in \Cl(K)$,
-i.e., $I^m = (\alpha)$ is a principal ideal. We put $L = K(\alpha^{1/m})$. Now 
-$\alpha^{1/m} \in \cO_L$, and we have 
-$$(I \cO_L)^m = I^m \cO_L = \alpha \cO_L = (\alpha^{1/m})^m \cO_L.$$
-After decomposing $I\cO_L$ and $\alpha^{1/m}\cO_L$ into prime factors, we see that 
-this equation implies $I\cO_L = \alpha^{1/m} \cO_L$. 
+\begin{enumerate}[wide, labelindent=0pt]
+    \item Assume that $I = (\alpha)$.
+        Then $I = (u \alpha)$ for every unit $u \in \cO_K^\times$. Look at the morphism
+        \begin{equation*}
+            \cL: \cO_K\setminus \{0\} \to \R^{r+s}, 
+            \xi \mapsto (\log \abs{\sigma_1(\xi)}, \dots, \log \abs {\sigma_r(\xi)}, 
+            2\log \abs{\sigma_{r+1}(\xi)}, \dots, \log \abs{\sigma_{r+s}(\xi)}).
+        \end{equation*}
+        We have seen in the lecture that the image of $\cO_K^\times$ under this map 
+        is a lattice in a linear subspace $V$. Here $V$ is given by those vectors
+        of $\R^{r+s}$ whose coordinates sum up to $0$. We are of course interested
+        in the image of the set $\alpha \cO_K^\times$ under $\cL$. This is contained
+        in the affine-linear subspace $\cL(\alpha) + V$. 
+        
+        The exercise now translates to: There is some constant $C > 0$ depending only
+        on $K$ such that there is a point $x = (x_1, \dots, x_r, 2x_{r+1}, \dots,
+        2x_{r+s}) \in \cL(\alpha) + \cL(\cO_K^\times) \subset \cL(\alpha)+V$ with 
+        \begin{equation*}
+             \max x_i \leq \frac 1d \log \Norm(I) + \log(C)
+        \end{equation*}
 
-\exercise{2} 
-Let $K = \Q(\sqrt 2, \sqrt 3)$ and set 
+        We write $W$ for the vector space spanned by 
+        \begin{equation*}
+            w_0 = \frac 1d (1,\dots,1).
+        \end{equation*}
+        This is orthogonal to the subspace $V$. Write $\cL(\alpha) = w + v$ where
+        $v \in V$ and $w \in W$. We have 
+        \begin{equation*}
+            \norm{\cL(\alpha)}_1 = \log \Norm(I),
+        \end{equation*}
+        hence we obtain 
+        $$\norm w_\infty \leq \norm{\cL(\alpha)}_\infty \leq \frac 1d \log \Norm(I).$$
+        All we need to do is to find a point of $\cL(\alpha \cO_K^\times)$
+        close to $w$. For $\nu \in V$ define $d(\nu) = \inf_{\gamma \in \cL(\cO_K^\times)}
+        (\norm{\nu-\gamma}_\infty)$, and set $C = \sup_{\nu \in V} d(\nu)$. This 
+        is well-defined because $\cL(\cO_K^\times)$ is a lattice in $V$.
+        Now $C$ only depends on $K$, and we find a point 
+        $$(x_1,\dots, x_r, 2x_{r+1},\dots, 2x_{r+s}) = x = w + \nu_0$$
+        with $\nu_0 \in V$ and $\norm{\nu_0}_\infty \leq C$. In particular,
+        \begin{equation*}
+        \max x_i \leq \norm x_\infty \leq \norm w_\infty + \norm {\nu_0}_\infty \leq
+        \frac 1d \log \Norm(I) + C.
+        \end{equation*}
+        This solves the exercise.
+        
+    \item Let $\eta$ be as in the question and assume $\abs \eta < 1$. Let
+        $\sigma_1, \sigma_2: K \inj \R$ be the two real embeddings of $K$ (i.e., 
+        $\sigma_1$ is the identity on $K \subset \R$ and $\sigma_2$ is "conjugation").
+        Suppose $I = (\alpha)$. Then we can pick $n$ such that 
+        \begin{equation*}
+            \sigma_1(\eta^n \alpha) = \abs \eta^n \abs{\sigma_1(\alpha)}
+            \in \left(\abs \eta^{1/2} \Norm(I)^{1/2}, \abs \eta^{-1/2}
+            \Norm(I)^{1/2}\right).
+        \end{equation*}
+        Now 
+        \begin{equation*}
+            \abs{\sigma_2(\eta^n \alpha)} = \abs{\eta^{-n}} \abs{\sigma_2(\alpha)}
+            = \left( \abs \eta^{-n} \sigma_1(\alpha)^{-1} \right) \Norm(I)
+                \leq \frac 1{\abs{\eta}^{1/2}} \Norm(I)^{1/2}.
+        \end{equation*}
+
+    \item Let $K = \Q(\sqrt {82})$. A unit as in 2 is given by $\eta = 9 + \sqrt 82$. 
+        This can be checked similarly to sheet 11, exercise 4. 
+        Also, note that (by Dedekind-Kummer) $2 \cO_K= \fp^2$ for some prime
+        ideal $\fp$. Now $\Norm(\fp)=2$, and a solution to $x^2 - 82y^2 = 2$
+        would result in $\fp$ being principal. 
+        By part 1 and two, it suffices to show that there is no solution with
+        $$\max \abs{x \pm \sqrt {82} y} \leq \Norm(2 \cO_K)^{1/2} \sqrt{9 + \sqrt{82}}
+        < 7.$$
+        But there are no such solutios as $\sqrt 82 > 7$. 
+\end{enumerate}
+
+
+\exercise{2}
+Show that 
 \begin{equation*}
-    \Gamma = \{(1+ \sqrt 2)^i(2 + \sqrt 3)^j(\sqrt 2 + \sqrt 3)^k \mid i,j,k \in \Z\}.
+    \zeta_{\Q(\sqrt 6} \zeta_{\Q(\sqrt 7} \zeta_{\Q(\sqrt {42})} 
+    = \zeta_{\Q(\sqrt 6, \sqrt 7)} \zeta_\Q^2.
 \end{equation*}
-Show that $\Gamma$ is a subgroup of $\cO_K^\times$ and that $[\cO_K^\times: \Gamma] < \infty$.
-
-\textbf{Solution.}
-Write $u,v,w$ for the respective factors, so that $\Gamma = u^\Z v^\Z w^\Z$. 
-Note that $\NormKQ(u) = \NormKQ(v) = 1$ and $\NormKQ(w) = -1$, so that indeed,
-$u,v,w$ are units and $\Gamma$ is a subgroup of $\cO_K^\times$. One quickly verifies that
-$K$ is totally real. Indeed, it is Galois and there is a embedding $K \inj \R$ (now all
-other embeddings are obtained by shifting with elements in the Galois group). 
-Hence, by Dirichlet's unit theorem, 
-$$\cO_K^\times \cong \mu(K) \times \Z^{r+s-1} = \pm 1 \times \Z^3.$$
-On the other hand, $\Gamma$ is free of rank $3$. Indeed, $u \in \Q(\sqrt 2)^\times$,
-$v \in \Q(\sqrt 3)^\times$ and $w \in \Q(\sqrt 2, \sqrt
-3)^\times\setminus(\Q(\sqrt 2)^\times \cup \Q(\sqrt 3)^\times) \cup \{1\}$. These multiplicative
-subsets of $\Q(\sqrt 2, \sqrt 3)$ only have trivial intersection.
-
-Let $\cO_{K, >0}^\times \cong \Z^3$ be the (free) group of positive units (here we implicitly
-fix a inclusion $K \inj \R$). 
-Now $\Gamma$ is a free subgroup of full rank this group, and in particular, 
-its has finite index. The inclusion $\cO_{K, >0}^\times \inj \cO_K^\times$ also has
-finite index, hence $\Gamma \inj \cO_K^\times$ has finite index. 
-
-\exercise{3}
-Let $K$ be a totally real number field, i.e., one that has \textbf{only} real embeddings.
-Let 
-\begin{equation*}
-    T \subset \Hom(K, \R) = \{\tau: K \to \R \mid \tau \text { is a field homomorphism}\}
-\end{equation*}
-be a proper non-mepty subset. Show that there exists $u \in \cO_K^\times$ such that 
-$0 < \tau(u) < 1$ for $\tau \in T$ and $\tau(u) > 1$ for $\tau \in \Hom(K, \R)
-\setminus T$.
 
 \textbf{Solution.} 
-Let $\sigma_1, \dots, \sigma_r: K \to \R$
-be the real embeddings of $K$ (in our case $r = n = [K : \Q]$). 
-From the proof of Dirichlet's unit theorem, we know that the map
-\begin{equation*}
-    \cL: \cO_K^\times \to \R^{r}, \quad u \mapsto (\log \abs{\sigma_1(u)}, \dots, \log \abs{\sigma_r(u)})
-\end{equation*}
-is a group homomorphism from $\cO_K$ to $\R^{r-1}$. It's image lies in the sub vector
-space $V$ given by 
-\begin{equation*}
-    V = \left\{(x_1, \dots, x_r)^t \in \R^r \mid \sum_{i = 1}^r x_i = 0\right\},
-\end{equation*}
-and its kernel is given by $\mu(K)$, the group of roots of unity in $K$ (in our case this
-is $\cong \{\pm 1\}$). Also, the image $\cL(\cO_K^\times)$ has full rank in 
-$V$, i.e., $\cL(\cO_K^\times) \otimes_\Z \R \cong V$ (it is a lattice in $V$). 
+\red{Will add later}
+%Recall that from the lecture (Example 3.12, say) we have for quadratic fields
+%$K = \Q(\sqrt m)$ with discriminand $\Delta_K$
+%\begin{equation*}
+%    p\cO_K = 
+%    \begin{cases}
+%        \textit{prime ideal}, &\text{ if } \legendre{\Delta_K}{p} = -1 \\
+%        \fp_1 \fp_2, &\text{ (totally split) if } \legendre{\Delta_K}{p} = 1 \\
+%        \fp^2, &\text{ (totally ramified) if } \legendre{\Delta_K}{p} = 0.
+%    \end{cases}
+%\end{equation*}
+%
+%Also, note that for $K$ as above we have
+%\begin{multline*}
+%    \zeta_K(s) = \prod_{\fp} \left( 1 - \frac{1}{\Norm(\fp^s)} \right)^{-1} \\
+%    = \prod_{\legendre{\Delta_K}{p} = -1}\left( 1 - \frac{1}{\Norm(\fp)^{2s}}\right)^{-1}
+%        \prod_{\legendre{\Delta_K}{p} = 1}\left( 1 - \frac{1}{\Norm(\fp)^{s}}\right)^{-2}
+%        \prod_{\legendre{\Delta_K}{p} = 0}\left( 1 - \frac{1}{\Norm(\fp)^{s}}\right)
+%\end{multline*}
+%
+%In our case, we have $K_1 = \Q(\sqrt 6)$ and $K_2 = \Q(\sqrt 7)$, and going through the
+%different cases we find 
+%\begin{equation*}
+%    \zeta_\Q \zeta_{K_1} \zeta_{K_2}(s) = 
+%    \zeta^2(s) \left(\frac 1{1-3^{-s}} \right)^2 
+%\end{equation*}
+%
 
-Without loss of generality we can assume that 
-$T = \{\sigma_1, \dots, \sigma_q\}$ for some $1 \leq q < r$. Let $Q \subset
-\R^r$ be the quadrant given by
+\exercise{3}
+Let $K$ be a number field and let 
 \begin{equation*}
-    Q = \{(x_1, \dots, x_r)^t \in \R^r \mid x_i < 0 \text{ for }i = 1, \dots, q
-    \text{ and }x_i > 0 \text{ for } i = q+1, \dots, r \}.
+    \log: \C \setminus (-\infty, 0] \to \C
 \end{equation*}
-The intersection $Q \cap V$ is non-empty by construction, and one readily verifies that
-there is a point $x \in Q \cap \cL(\cO_K^\times)$. Now choose some preimage
-$u \in \cO_K^\times$ of $x$. As $u$ satisfies $\abs{\sigma_i(u)} < 1$ for 
-$1 \leq i \leq q$ and $\abs{\sigma_i(u)} > 1$ for $q < i \leq r$,
-the element $u^2$ satisfies all constraints.
-
-\exercise{4}
-Let $K$ be a number field, let $I$ be a non-zero ideal of $\cO_K$ and let $C \in \Cl(K)$. Use
-theorem 5.3 to show that there exists a non-zero ideal $J$ of $\cO_K$ such that $I + J = \cO_K$ and
-$C = [J]$. 
-
+denote the principal branch of the complex logarithm. The variable $\fp$ always
+runs over the non-zero primes of $\cO_K$ in the following.
+\begin{enumerate}
+    \item Show that 
+        \begin{equation*}
+            \lim_{s \rightarrow 1^+} \frac{1}{\log(s-1)} \sum_\fp \log (1 - \Norm(\fp)^{-s}) = 1.
+        \end{equation*}
+    \item Show that 
+        \begin{equation*}
+            \sum_{\fp;\ f(\fp)>1} \frac 1{\Norm(\fp)} + \sum_\fp \sum_{n=2}^\infty \frac 1{n \Norm(\fp)^n} < \infty.
+        \end{equation*}
+    \item Using 1 and 2, deduce that there exists infinitely many prime ideals $\fp$ of $\cO_K$ with 
+        $f(\fp)=1$. 
+\end{enumerate}
 \textbf{Solution.}
-%Theorem 5.3 counts the number of objects in an ideal class up to some given norm $t$.
-%For $C \in \Cl(K)$, let $i(K, C, t)$ be the set of ideal in the given ideal class $C$
-%with norm $\leq t$ (just as in the statement). Then theorem 5.3 reads
-%\begin{equation*}
-%    i(K, C, t) = \kappa t + O(t^{1 - 1/d}) = \kappa t + o(t).
-%\end{equation*}
-%Here we used \emph{big-$O$-notation}, what this means essentially is that $i(K,C,t)$ is
-%of size $\kappa t$ up to some small error. 
-%Let's solve the exercise. We will show that the set of ideals
-%\begin{equation*}
-%    \{J \subset \cO_K \mid J \in C \& J + I = \cO_K \& \Norm(J) \leq t\}
-%\end{equation*}
-%is non-epty for $t$ sufficiently large. Note that two ideals are coprime if and
-%only if they don't share a prime factor. 
-%If we assume that $J = \fp$ is prime, this is immediate. We have
-\red{will add this later!}
+The following is a bit unprecise as I sometimes forgot to insert absolute-value
+brackets. But it works out if we simply assume $s \in \R$ everywhere.
+\begin{enumerate}
+    \item We know that the Dedekind-zeta function $\zeta_K(s)$ is holomorphic
+        in $\Re s >1$, has a pole of order $1$ at $s=1$ with residue $\kappa >0$
+        and has an Euler product
+        \begin{equation*}
+            \zeta_K(s) = \prod_{\fp} \left(1- \Norm(\fp)^{-s}\right)^{-1}.
+        \end{equation*}
+        Hence we find
+        \begin{equation*}
+            \lim_{s \to 1^+} \left((s-1) \prod_\fp \left(1- \Norm(\fp)^{-s}\right)^{-1} 
+                \right)
+            = \kappa,
+        \end{equation*}
+        and the claim follows after taking logarithms.
+    \item Note that there are at most $[K:\Q]$ prime ideals of $\cO_K$ above
+        each prime number $p \in \Z$. If $\fp$ lies above $p$ and $f(\fp)>1$,
+        we have (by definition) $\Norm(\fp)\geq p^2$. Hence we obtain that 
+        \begin{equation*}
+            \sum_{\fp, f(\fp)>1} \Norm(\fp)^{-s} \leq 
+            [K:\Q] \sum_{p} p^{-2s}, 
+        \end{equation*}
+        which is (absolutely) convergent for $\Re s > \frac 12$. Similarly, we find that 
+        \begin{equation*}
+            \frac{1}{[K:\Q]} \sum_\fp \sum_{n=2}^\infty \frac 1{n \Norm(\fp)^{sn}}
+            \leq \sum_p \sum_{n=2}^\infty \frac 1{np^{sn}}
+            < \sum_p p^{-2s} \sum_{n=0}^\infty p^{-sn} 
+            < \left( \sum_{n=0}^\infty 2^{-sn}\right) \sum_p p^{-2s} .
+        \end{equation*}
+        This is absolutely convergent for $\Re s > 0$.
+
+    \item Recall that $\log(1+t) = \sum_{n=1}^\infty \frac {(-1)^{n-1}}n t^{n}$ for
+        $\abs t < 1$. We plug this
+        into the logarithm of the euler product to obtain for $\Re s > 1$
+        \begin{equation*}
+            \log \zeta_K(s) = -\sum_\fp \log(1- \Norm(\fp)^{-s})
+            = \sum_\fp \sum_{n=1}^\infty \frac 1n \Norm(\fp)^{-ns}.
+        \end{equation*}
+        Splitting off the $n=1$ terms, this yields
+        \begin{equation*}
+            \log \zeta_K(s) = \sum_{\fp, f(\fp) = 1} \Norm(\fp)^{-s} 
+            + \sum_{\fp, f(\fp)>1} \Norm(\fp)^{-s} + 
+            \sum_\fp \sum_{n=2}^\infty \frac{1}{n \Norm(\fp)^{sn}}.
+        \end{equation*}
+        The left hand side of this equation diverges for $s \to 1^+$, but the last 
+        two terms of the RHS remain finite by part 2. The claim follows.
+        
+\end{enumerate}
 
 \contactend
 \end{document}
