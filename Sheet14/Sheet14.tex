@@ -1,0 +1,238 @@
+\documentclass[a4paper,11pt]{article}
+\pagenumbering{arabic}
+\usepackage{../environment}
+\begin{document}
+
+\begin{center}
+    \huge{Solutions to Sheet 14}
+\end{center}
+
+\exercise{1}
+Let $m \in \N$ and let $\chi$ be a Dirichlet character modulo $m$.
+\begin{enumerate}
+    \item Show that $\log \abs{1-w} = - \Re \sum_{k=1}^\infty \frac{w^k}k$ 
+        for all $w \in \C$ with $\abs w < 1$. 
+    \item Show that $3 + 4\cos \theta + \cos 2 \theta \geq 0$ for all 
+        $\theta \in \R$.
+    \item Show that $\abs{1-w}^3\abs{1-wu}^4\abs{1-wu^2}\leq 1$ for all $w \in [0,1)$
+        and all $u \in \C$ with $\abs u = 1$.
+    \item Show that $\abs{\zeta(\sigma)^3}\abs{L(\sigma + it; \chi)}^4 
+        \abs{L(\sigma + 2it;\chi^2)} \geq 1$ for all $\sigma \in (1, \infty)$
+        and $t \in \R$.
+    \item Deduce that $L(1+it; \chi) \neq 0$ for all $t \in \R\setminus \{0\}$.
+\end{enumerate}
+\textbf{Solution.}
+This exercise reviews standard methods to prove zero-free regions of $L$-functions, and
+most introductors texts to analytic number theory should cover the content of this 
+exercise (see for example [Jörg Brüdern, \textit{Einführung in die analytische Zahlentheorie}, p. 101f]). Hence I will only sketch the solution.
+\begin{enumerate}[wide, labelindent=0pt]
+    \item The power series is that of the standard branch of the logarithm. The claim
+        now follows by its properties.
+    \item This is a trick found by Hadamard and de la Vall\'ee Poussin. One quickly
+        checks that 
+        \begin{equation*}
+            3 + 4 \cos \alpha + \cos 2(\alpha) = 2(1 + \cos \alpha)^2 \geq 0.
+        \end{equation*}
+    \item Okay clearly the previous two exercises want us to take logaritm. We write 
+        $u = \ec^{\alpha \ic}$ and find
+        \begin{multline*}
+            \log( \abs{1-w}^3 \abs{1-wu}^4 \abs{1- wu^2} ) = 
+            3\log( \abs{1-w} ) + 4\log \abs{1-wu} + \log (\abs{1- wu^2}) \\ 
+            = - \sum_k \frac {w^n}n \left( 3 + 4 \cos(n \alpha) + \cos(2 n \theta) 
+                \right) \leq 0.
+        \end{multline*}
+        In the last inequality we used 2. 
+    \item Developing this in a euler product, the terms that occur are exactly of the
+        form from exercise $3$, but (multiplicatively) inverted. The claim follows.
+
+    \item Suppose that $L(1 + \ic t; \chi) = 0$ for some $t \neq 0$. Then also
+        \begin{equation*}
+            \lim_{\sigma \to 1^+} \abs{\zeta(\sigma)^3}\abs{L(\sigma + it; \chi)}^4 
+        \abs{L(\sigma + 2it;\chi^2)} = 0,
+        \end{equation*}
+        as all the functions are analytic the degree $3$-pole of $\zeta(\sigma)^3$
+        at $\sigma = 1$ get's eaten by $L(\sigma + \ic t; \chi)^4$, which is a
+        degree-$4$-zero at this point. This contradicts 
+        part $4$. (Here we used that all the functions have
+        (meromorphic) continuations to the whole plane.)
+\end{enumerate}
+
+\exercise{2}
+Let $\chi$ be a non-trivial Dirichlet character modulo $8$. Show that 
+\begin{equation*}
+    L(1; \chi) > 1 - \frac 13 - \frac 15 + \frac 17 = \frac{64}{105}.
+\end{equation*}
+\textbf{Solution.}
+The idea is that every Dirichlet character mod $8$ is real as every element in 
+$(\Z/2\Z)$ has order at most $2$. Furthermore, we have 
+$\chi(3)\chi(5) = \chi(7)$. Hence the smallest possible value that the series
+\begin{equation*}
+    L(1; \chi) = \sum_{n = 1}^\infty \frac{\chi(n)}n =
+    \sum_{k \in 8\N } \left( \frac{\chi(k+1)}{k+1} + 
+    \frac{\chi(k+3)}{k+3} + 
+    \frac{\chi(k+5)}{k+5} + 
+    \frac{\chi(k+7)}{k+7} \right)
+\end{equation*}
+can ever take is if $\chi(3) = \chi(5) = (-1)$ and $\chi(7) = 1$. In this case the 
+above becomes 
+\begin{equation*}
+    L(1; \chi) =    \sum_{k \in 8\N}\left( \frac{1}{k+1} -
+                    \frac{1}{k+3} -
+                    \frac{1}{k+5} + 
+                    \frac{1}{k+7} \right)
+\end{equation*} 
+One quickly checks that for each $k \in \N$ (as $x \mapsto \frac1x$ is a convex function), 
+\begin{equation*}
+    \frac 1{k+1} - 
+    \frac 1{k+3} - 
+    \frac 1{k+5} +
+    \frac 1{k+7}  > 0,
+\end{equation*}
+and the claim follows after truncating the series above at $k=1$.
+
+\exercise{3}     
+Let $m \in \N$, set $\zeta_m = \ec^{2 \pi \ic/m}$ and let $K \subset \Q(\zeta_m)$
+be a number field of degree $d$. Set $G = \Gal(K/\Q)$ and identify $\hat G$ with a 
+subgroup of the group of Dirichlet characters modulo $m$ as in the lecture.
+\begin{enumerate}
+    \item Show that for each $\chi \in \hat G$, there exists a unique $f = f_\chi 
+        \in \N$ (called the \emph{conductor} of $\chi$) such that $f \mid m$
+        and $\chi$ is the composition of the canonical homomorphism
+        $(\Z/m\Z)^\times \to (\Z/f\Z)^\times$ with a primitive Dirichlet character
+        $\chi^{\mathrm{prim}}$ modulo $f$.
+    \item Let $p$ be a prime number such
+        that $m = m'p^e$ for some $m', e \in \N$ such
+        that $p \nmid m'$. Set $\zeta_{m'} = \ec^{2 \pi \ic /m'}$ and $L = 
+        K\cap \Q(\zeta_{m'})$. Show that 
+        \begin{equation*}
+            \prod_{\fp \mid p\cO_K} (1 - \Norm(\fp)^{-s}) = 
+            \prod_{\fq \mid p\cO_L} (1 - \Norm(\fq)^{-s}) =
+            \prod_{\chi \in \hat G} (1 - \chi^{\mathrm{prim}}(p) p^{-s}) 
+        \end{equation*}
+    \item Show that $\zeta_K(s) = \prod_{\chi \in \hat G} L(s;\chi^{\mathrm{prim}})$
+        for all $s \in \C\setminus \{1\}$ with $\Re s > 1-1/d$.
+\end{enumerate}
+\textbf{Solution.}
+\begin{enumerate}[wide, labelindent=0pt]
+    \item We let $f>1$ be the minimal integer with the desired property. 
+    \item We are in the following situation.
+\[      \begin{tikzcd}[ampersand replacement=\&]
+	    K \& {\Q(\zeta_m) = \Q(\zeta_{p^e}) \cdot \Q(\zeta_{m'})} \\
+	    L \& {\Q(\zeta_{m'})} \\
+	    \Q \& \Q
+	    \arrow[from=2-2, to=1-2]
+	    \arrow[no head, from=2-1, to=1-1]
+	    \arrow[no head, from=3-1, to=2-1]
+	    \arrow[from=1-1, to=1-2]
+	    \arrow[from=2-1, to=2-2]
+	    \arrow[from=3-1, to=3-2]
+	    \arrow[from=3-2, to=2-2]
+    \end{tikzcd}
+\]
+        We know that the extension $\Q \inj \Q(\zeta_m')$ is unramified above $p$
+        as $p$ does not the discriminant of $\Q(\zeta_{m'})$. Hence $p$ is also 
+        unramified in $L$ (by multiplicativity of ramification indeces along 
+        extensions of fields), and we find that 
+        \begin{equation*}
+            p\cO_K = \fq_1 \dots \fq_r
+        \end{equation*}
+        for $r$ pairwise distinct primes $\fq_i \subset \cO_L$. Let $f_i$ be the
+        residue degree of $\fq_i$ over $p$, then on the side of the Euler factors
+        we find
+        \begin{equation*}
+            \prod_{\fq \mid p\cO_L}(1 - \Norm(\fq)^{-s}) = 
+            \prod_{i=1}^r(1 - p^{-f_is}).
+        \end{equation*}
+        As $\Q(\zeta_m) \cong \Q(\zeta_{m'})[T]/(T^{p^e}-1)$ we find that above $p$,
+        the extension $\Q(\zeta_{m'}) \inj \Q(\zeta_m)$ is totally ramified, hence
+        the extension $L \inj K$ is totally ramified as well (by multiplicativity of 
+        residue degrees along extensions). Thereby we can write 
+        $\fq_i \cO_K = \fp_i^{e_i}$ for prime ideals $\fp_i \subset \cO_K$. But the 
+        Euler factors \emph{forget} about the numbers $e_i$. Hence we also find
+        \begin{equation*}
+            \prod_{\fp \mid p\cO_K}(1 - \Norm(\fq)^{-s}) = 
+            \prod_{i=1}^r(1 - p^{-f_is}).
+        \end{equation*}
+
+        We now show the equality
+        \begin{equation*}
+            \prod_{\fq \mid p\cO_L} (1 - \Norm(\fq)^{-s}) =
+            \prod_{\chi \in \hat G} (1 - \chi^{\mathrm{prim}}(p) p^{-s}).
+        \end{equation*}
+        We make use of Theorem 6.13 in the lecture and write 
+        $H = \Gal(L/\Q)$. Applied to our situation, the Theorem states that 
+        \begin{equation*}
+            \zeta_L(s) = \prod_{\fq \mid m' \cO_L} \frac{1}{1-\Norm(\fq)^{-s}}
+                         \prod_{\chi \in \hat {H}} L(s;\chi).
+        \end{equation*}
+        Hence (as $p \nmid m'$) the Euler factor of $\zeta_L(s)$ at $p$ is given by 
+        \begin{equation*}
+            \prod_{\fq \mid p\cO_L}\frac{1}{1-\Norm(\fq)^{s}} = \prod_{\chi \in
+            \hat H} \frac{1}{1-\chi(p)p^s}.
+        \end{equation*}
+        Now the argument gets a little wild\footnote{I was too lazy to formulate out what
+            the category-theoretic words mean. But all of the following can be made
+            explicit, and I encourage you to do so if you haven't encountered
+            the words used here before.}. First, using standard arguments in Galois
+        theory, one can show that the diagram of abelian groups 
+        \begin{equation*}
+            \begin{tikzcd}[ampersand replacement=\&]
+            	{\Gal(\Q(\zeta_m)/\Q)} \& G \\
+            	{\Gal(\Q(\zeta_{m'})/\Q)} \& {H }
+            	\arrow[two heads, from=1-2, to=2-2]
+            	\arrow[two heads, from=1-1, to=2-1]
+            	\arrow[two heads, from=1-1, to=1-2]
+            	\arrow[two heads, from=2-1, to=2-2]
+            \end{tikzcd}
+        \end{equation*}
+        is a pushout diagram in the category of (finitely generated) abelian
+        groups. Now we use that $\Hom_{\Ab}(-, \C^\times)$ is an exact functor
+        (or equivalently, $\Q/\Z$ is an injective object in $\Ab$), to obtain 
+        that the dual diagram
+        \begin{equation*}
+            \begin{tikzcd}[ampersand replacement=\&]
+            	{\hat H} \& {\hat {(\Z/m'\Z)^\times}} \\
+            	{\hat G} \& {\hat {(\Z/m\Z)^\times}}
+            	\arrow[hook, from=1-1, to=2-1]
+            	\arrow[hook, from=1-1, to=1-2]
+            	\arrow[hook, from=2-1, to=2-2]
+            	\arrow[hook, from=1-2, to=2-2]
+            \end{tikzcd}
+        \end{equation*}
+        is a pullback-diagram, which is to say, we have $\hat H = 
+        \hat G \cap \hat {(\Z/m'\Z)^\times}$ inside ${\hat {(\Z/m\Z)^\times}}$ (where 
+        we identify the multiplicative residue groups with the respective 
+        cyclotomic Galois-groups). Now we are almost done. It is relatively straight-forward
+        to check that whenever $f \in \hat G$, we have
+        \begin{equation*}
+            \chi^{\mathrm{prim}}(p) = 0 \iff p \mid f_\chi \iff \chi \not \in {\hat
+            {(\Z/m'\Z)^\times}} \subset {\hat {(\Z/m\Z)^\times}} \iff \chi \not \in \hat H.
+        \end{equation*}
+        In particular, as we have $\chi(p) = \chi^{\mathrm{prim}}(p)$ whenever
+        $p \nmid f_\chi$, we find 
+        \begin{equation*}
+            \prod_{\chi \in \hat H}(1- \chi(p)p^{-s}) = \prod_{\chi \in \hat G}
+            (1 - \chi^{\mathrm{prim}}(p)p^{-s}).
+        \end{equation*}
+        
+    \item This follows by comparing the factors of the respective Euler products.
+\end{enumerate}
+
+\exercise{4}
+Let $p$ be an odd prime number and let $\zeta \in \C$ be a root of unity of order $p$. 
+Show that $1+ \zeta \in \cO_{\Q(\zeta)}^\times$. 
+
+\textbf{Solution.}
+Note that $1+\zeta = \frac{1-\zeta^2}{1-\zeta}$. If we pick $n \in \N$ such that 
+$2n \equiv 1$ mod $p$, we have
+\begin{equation*}
+    \frac{1-\zeta^2}{1-\zeta} = \frac{1-\zeta^2}{1-\zeta^{2n}} = \left(
+    \frac{1-\zeta^{2n}}{1-\zeta^{2}} \right)^{-1}.
+\end{equation*}
+And this is in $\cO_K$, as 
+\begin{equation*}
+    \frac{1-\zeta^{2n}}{1-\zeta^2} = 1 + \zeta^2 + \zeta^4 + \dots + \zeta^{2(n-1)}.
+\end{equation*}
+
+\contactend
+\end{document}

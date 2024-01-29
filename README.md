@@ -27,5 +27,6 @@ and cubic extensions, a non-monogenic number field.
 * [Sheet 11](Sheet11/Sheet11.pdf) Every prime can be written as a sum of four squares, calculation of class numbers of certain quadratic fields, some explicit verification of Dirichlet's unit theorem.
 * [Sheet 12](Sheet12/Sheet12.pdf) Every ideal has trivial ideal class in some extension, some subgroup of the units, an exercise that wants you to understand the proof of Dirichlet's unit theorem and a first application of analytic tools.
 * [Sheet 13](Sheet13/Sheet13.pdf) Something something principal ideals, Dedekind-zeta functions, analysis. *Update: Fixed a mistake in exercise 1.*
+* [Sheet 14](Sheet14/Sheet14.pdf) Some analytic number theory, a neat formula for decomposing Dedekind zeta functions of abelian number fields, a particular element is a unit.
 
 ###### Max von Consbruch, email: mvconsbruch(at)uni-bonn(dot)de
