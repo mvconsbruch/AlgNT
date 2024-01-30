@@ -130,7 +130,7 @@ subgroup of the group of Dirichlet characters modulo $m$ as in the lecture.
     \end{tikzcd}
 \]
         We know that the extension $\Q \inj \Q(\zeta_m')$ is unramified above $p$
-        as $p$ does not the discriminant of $\Q(\zeta_{m'})$. Hence $p$ is also 
+        as $p$ does not divide the discriminant of $\Q(\zeta_{m'})$. Hence $p$ is also 
         unramified in $L$ (by multiplicativity of ramification indeces along 
         extensions of fields), and we find that 
         \begin{equation*}
@@ -143,15 +143,18 @@ subgroup of the group of Dirichlet characters modulo $m$ as in the lecture.
             \prod_{\fq \mid p\cO_L}(1 - \Norm(\fq)^{-s}) = 
             \prod_{i=1}^r(1 - p^{-f_is}).
         \end{equation*}
-        As $\Q(\zeta_m) \cong \Q(\zeta_{m'})[T]/(T^{p^e}-1)$ we find that above $p$,
+        As $\Q(\zeta_m) \cong \Q(\zeta_{m'})[T]/(T^{p^e}-1)$ we find that above $p$
+        (or rather, above every prime dividing $p\cO_{\Q(\zeta_{m'})}$)
         the extension $\Q(\zeta_{m'}) \inj \Q(\zeta_m)$ is totally ramified, hence
         the extension $L \inj K$ is totally ramified as well (by multiplicativity of 
         residue degrees along extensions). Thereby we can write 
         $\fq_i \cO_K = \fp_i^{e_i}$ for prime ideals $\fp_i \subset \cO_K$. But the 
-        Euler factors \emph{forget} about the numbers $e_i$. Hence we also find
+        Euler factors \emph{forget} about the numbers $e_i$. We obtain the first equality,
+        as now
         \begin{equation*}
-            \prod_{\fp \mid p\cO_K}(1 - \Norm(\fq)^{-s}) = 
-            \prod_{i=1}^r(1 - p^{-f_is}).
+            \prod_{\fp \mid p\cO_K}(1 - \Norm(\fp)^{-s}) = 
+            \prod_{i=1}^r(1 - p^{-f_is}) = 
+            \prod_{\fq \mid p\cO_L}(1 - \Norm(\fq)^{-s}).
         \end{equation*}
 
         We now show the equality
@@ -173,7 +176,14 @@ subgroup of the group of Dirichlet characters modulo $m$ as in the lecture.
         Now the argument gets a little wild\footnote{I was too lazy to formulate out what
             the category-theoretic words mean. But all of the following can be made
             explicit, and I encourage you to do so if you haven't encountered
-            the words used here before.}. First, using standard arguments in Galois
+            the words used here before.}. 
+        We need to show that 
+        \begin{equation*}
+            \prod_{\chi \in \hat H}(1- \chi(p)p^{-s}) = \prod_{\chi \in \hat G}
+            (1 - \chi^{\mathrm{prim}}(p)p^{-s}),
+        \end{equation*}
+        i.e., we need to study the relations between the character groups of $H$ and $G$.
+        Using standard arguments in Galois
         theory, one can show that the diagram of abelian groups 
         \begin{equation*}
             \begin{tikzcd}[ampersand replacement=\&]
@@ -186,7 +196,7 @@ subgroup of the group of Dirichlet characters modulo $m$ as in the lecture.
             \end{tikzcd}
         \end{equation*}
         is a pushout diagram in the category of (finitely generated) abelian
-        groups. Now we use that $\Hom_{\Ab}(-, \C^\times)$ is an exact functor
+        groups. Now we use that $\Hom_{\finAb}(-, \C^\times)$ is an exact functor
         (or equivalently, $\Q/\Z$ is an injective object in $\Ab$), to obtain 
         that the dual diagram
         \begin{equation*}
@@ -199,11 +209,11 @@ subgroup of the group of Dirichlet characters modulo $m$ as in the lecture.
             	\arrow[hook, from=1-2, to=2-2]
             \end{tikzcd}
         \end{equation*}
-        is a pullback-diagram, which is to say, we have $\hat H = 
+        is a pullback-diagram, which is to say, we have $\hat H \cong 
         \hat G \cap \hat {(\Z/m'\Z)^\times}$ inside ${\hat {(\Z/m\Z)^\times}}$ (where 
         we identify the multiplicative residue groups with the respective 
         cyclotomic Galois-groups). Now we are almost done. It is relatively straight-forward
-        to check that whenever $f \in \hat G$, we have
+        to check that whenever $\chi \in \hat G$, we have
         \begin{equation*}
             \chi^{\mathrm{prim}}(p) = 0 \iff p \mid f_\chi \iff \chi \not \in {\hat
             {(\Z/m'\Z)^\times}} \subset {\hat {(\Z/m\Z)^\times}} \iff \chi \not \in \hat H.
@@ -214,6 +224,7 @@ subgroup of the group of Dirichlet characters modulo $m$ as in the lecture.
             \prod_{\chi \in \hat H}(1- \chi(p)p^{-s}) = \prod_{\chi \in \hat G}
             (1 - \chi^{\mathrm{prim}}(p)p^{-s}).
         \end{equation*}
+        The claim follows.
         
     \item This follows by comparing the factors of the respective Euler products.
 \end{enumerate}
