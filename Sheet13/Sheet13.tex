@@ -189,7 +189,8 @@ The following is a bit unprecise as I sometimes forgot to insert absolute-value
 brackets. But it works out if we simply assume $s \in \R$ everywhere.
 \begin{enumerate}
     \item We know that the Dedekind-zeta function $\zeta_K(s)$ is holomorphic
-        in $\Re s >1$, has a pole of order $1$ at $s=1$ with residue $\kappa >0$
+        in $\Re s >1$, has a pole of order $1$ at $s=1$ with residue $\kappa
+        >0$
         and has an Euler product
         \begin{equation*}
             \zeta_K(s) = \prod_{\fp} \left(1- \Norm(\fp)^{-s}\right)^{-1}.
@@ -213,9 +214,9 @@ brackets. But it works out if we simply assume $s \in \R$ everywhere.
             \frac{1}{[K:\Q]} \sum_\fp \sum_{n=2}^\infty \frac 1{n \Norm(\fp)^{sn}}
             \leq \sum_p \sum_{n=2}^\infty \frac 1{np^{sn}}
             < \sum_p p^{-2s} \sum_{n=0}^\infty p^{-sn} 
-            < \left( \sum_{n=0}^\infty 2^{-sn}\right) \sum_p p^{-2s} .
+            < \left( \sum_{n=0}^\infty 2^{-sn}\right) \sum_p p^{-2s},
         \end{equation*}
-        This is absolutely convergent for $\Re s > 0$.
+        which is absolutely convergent for $\Re s > \frac 12$.
 
     \item Recall that $\log(1+t) = \sum_{n=1}^\infty \frac {(-1)^{n-1}}n t^{n}$ for
         $\abs t < 1$. We plug this
